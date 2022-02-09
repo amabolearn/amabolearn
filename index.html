@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="keywords" content="Amabo learn, E learning, Free online learning"/>
+        <meta name="description" content="Amabo learn is an educational platform created to assist students by providing useful articles, an e-learning environment, videos, PDFs and more."/>
+        <title>Amabo learn - Home</title>
+        <!--libraries and frameworks-->
+        <link rel="stylesheet" href="./styles/animate.css"/>
+        <link rel="stylesheet" href="./styles/css/all.css"/>
+        <script type="text/javascript" src="./scripts/jquery.js"></script>
+        <script type="text/javascript" src="./scripts/ripple.js"></script>
+        <!--extras-->
+        <link rel="icon" href="./images/favicon.png" sizes="16x16"/>
+        <!--custom-->
+        <link rel="stylesheet" href="./styles/main.css">
+    </head>
+    <body>
+        <header class="flex default-orange-bg">
+            <a href="./">
+                <img src="./images/white logo.png" alt="Amabo Learn" class="logo-in-header">
+            </a>
+        </header>
+        <div class="main-content">
+            <p class="large-text grey-color section-text animate__animated animate__slideInLeft">
+                Amabo learn is an educational platform created to assist students by providing useful articles, an E-learning environment, videos, PDFs and more
+            </p>
+            <div class="illustration-cont animate__animated animate__slideInUp">
+                <img src="./images/interconnection illustration.png" alt="Join others" class="illustration">
+            </div>
+            <p class="large-text grey-color centered-text centered-in-landing-page animate__animated animate__slideInUp">
+                Join other users on a journey to academic success
+            </p>
+            <a href="./learn" class="block default-orange-color normal-text block-link-in-landing-page-main-content-box orange-border centered-text" id="link-to-learn">
+                Start learning
+            </a>
+            <div class="illustration-cont">
+                <img src="./images/signup illustration.png" alt="Signup" class="illustration">
+            </div>
+            <p class="large-text grey-color centered-text centered-in-landing-page" id="teacher" style="padding-top: 8vh;">
+                Are you a teacher ?
+                <br/>
+                Why don't you signup to become an administrator on this platform or login to your account
+            </p>
+            <a href="./signup" class="block white-color normal-text block-link-in-landing-page-main-content-box centered-text default-orange-bg" id="link-to-signup">
+                Signup
+            </a>
+            <a href="./login" class="block default-orange-color normal-text block-link-in-landing-page-main-content-box orange-border centered-text" id="link-to-login">
+                Login
+            </a>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="default-orange-bg footer-in-landing-page">
+                <p class="large-text white-color section-text">
+                    Support , contact & follow us on our social platforms
+                </p>
+                <br>
+                <a href="https://­www.facebook.com/­groups/­608771907088496/" class="link-to-social-platform white-color block mini-text">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://wa.me/qr/­XIRKOEBECEJGO1" class="link-to-social-platform white-color block mini-text">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <p class="large-text white-color section-text">
+                    Want to contribute to this project ?
+                </p>
+                <br>
+                <a href="https://www.github.com/amabolearn/amabolearn" class="link-to-social-platform white-color block mini-text">
+                    <i class="fab fa-github"></i>
+                </a>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <p class="white-color section-text small-text">
+                    copyright &copy; <span class="present-year-cont">2022</span> Amabo learn
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">
+            //useful functions, objects , consts, variables...
+            const ripple = new Ripple();
+            //jquery
+            $(document).ready(
+                () => {
+                   const presentYearCont = $(".present-year-cont");
+                   const date = new Date();
+                   presentYearCont.text(date.getFullYear());
+
+                   const linkBtns = $(".block-link-in-landing-page-main-content-box");
+                   //adding ripple effects to the link btns
+                   linkBtns.click(
+                       () => {
+                           ripple.createRipple({
+                               "rippleParentId" : `${event.target.id}`,
+                               "height" : 50,
+                               "width" : 150,
+                               "background" : "orange",
+                               "foreground" : "#ff550077",
+                               "time" : 8,
+                               "type" : "",
+                               "increaseBy" : 4
+                           })
+                       }
+                   );
+                }
+            )
+        </script>
+    </body>
+</html>

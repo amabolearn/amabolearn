@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="keywords" content="Amabo learn, E learning, Free online learning"/>
+        <meta name="description" content="Post new article via your admin account"/>
+        <title>Amabo learn - Article post</title>
+        <!--libraries and frameworks-->
+        <link rel="stylesheet" href="../styles/animate.css"/>
+        <link rel="stylesheet" href="../styles/css/all.css"/>
+        <script type="text/javascript" src="../scripts/jquery.js"></script>
+        <script type="text/javascript" src="../scripts/ripple.js"></script>
+        <!--extras-->
+        <link rel="icon" href="../images/favicon.png" sizes="16x16"/>
+        <!--custom-->
+        <link rel="stylesheet" href="../styles/main.css">
+    </head>
+    <body>
+        <header class="flex default-orange-bg">
+            <a href="../">
+                <img src="../images/white logo.png" alt="Amabo Learn" class="logo-in-header">
+            </a>
+        </header>
+        <div class="main-content">
+            <p class="large-text grey-color section-text centered-text">
+                New article
+            </p>
+            <div class="form"><form id="article-post-form">
+                <input type="text" id="topic" placeholder="Topic" class="normal-text block grey-2-border grey-1-color" required >
+                <select id="subject" required placeholder="Password" class="normal-text block grey-2-border grey-1-color">
+                    <option value="None">
+                        Subject
+                    </option>
+                    <option value="None">
+                        Subject
+                    </option>
+                    <option value="None">
+                        Subject
+                    </option>
+                </select>
+                <textarea type="text" id="article content" placeholder="Content..." class="normal-text block grey-2-border grey-1-color" required ></textarea>
+                <input type="submit" value="Post" class="normal-text block white-color default-orange-bg no-border" disabled>
+            </form>
+            </div>
+        </div>
+    </body>
+</html>
