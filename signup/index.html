@@ -18,7 +18,7 @@
     </head>
     <body>
         <header class="flex default-orange-bg">
-            <a href="../">
+            <a href="../"> 
                 <img src="../images/white logo.png" alt="Amabo Learn" class="logo-in-header">
             </a>
         </header>
@@ -26,12 +26,30 @@
             <p class="large-text grey-color section-text centered-text">
                 Admin registration
             </p>
-            <div class="form"><form id="signup-form">
-                <input type="text" id="full-name" required placeholder="Full name" class="normal-text block grey-2-border grey-1-color">
-                <input type="email" id="email" required placeholder="Email address" class="normal-text block grey-2-border grey-1-color">
-                <input type="password" id="password" required placeholder="Password" class="normal-text block grey-2-border grey-1-color">
-                <input type="submit" value="Signup" class="normal-text block white-color default-orange-bg no-border" disabled>
-            </form>
+            <div class="form">
+                <form id="signup-form">
+                    <input type="text" id="full-name" required placeholder="Full name" class="normal-text block grey-2-border grey-1-color">
+                    <input type="email" id="email" required placeholder="Email address" class="normal-text block grey-2-border grey-1-color">
+                    <input type="password" id="password" required placeholder="Password" class="normal-text block grey-2-border grey-1-color">
+                    <input type="password" id="password-retyped" required placeholder="Retype password" class="normal-text block grey-2-border grey-1-color">
+
+                    <div class="validation-message grey-color">
+                        <p id="full-name-validation">
+                            Full name is not optional
+                        </p>
+                        <p id="email-must-be-valid">
+                            Email must be valid
+                        </p>
+                        <p id="password-must-be-long">
+                            Passwords must be at least 8 in length
+                        </p>
+                        <p id="password-must-match">
+                            Passwords must match
+                        </p>
+                    </div>
+
+                    <input type="submit" value="Signup" id="signupBtn" class="normal-text block white-color default-orange-bg no-border" disabled>
+                </form>
             </div>
             <div class="links-to-help-center" style="margin-top: -2vh;">
                 <a href="../login" class="block">
@@ -42,5 +60,82 @@
                 copyright &copy; <span class="present-year-cont">2022</span> Amabo learn
             </p>
         </div>
+
+        <div class="loader-cont none opac-black-bg">
+            <div class="loader-main-cont white-bg">
+                <div class="loader blue-bg"></div>
+            </div>
+        </div>
+        
+        <script type="text/javascript">
+            //ripplejs
+            const ripple = new Ripple();
+    
+            //jquery
+            $(document).ready(
+                () => {
+    
+                    const fullName = $("#full-name") , email = $("#email") , password = $("#password") , retypedPassword = $("#password-retyped") , submitBtn = $("input[type='submit']");
+    
+                    const nameValidation = $("#full-name-validation") , emailValidator = $("#email-must-be-valid") , passwordLength = $("#password-must-be-long") , passwordMatch = $("#password-must-match");
+                    
+                    let emailIsEmpty = true , nameIsEmpty = true , passwordIsNotLong = true , passwordsAreNotEqual = true;
+                    
+                    const validateForm = () => {
+                        email.val().trim() === "" ? emailIsEmpty = true : emailIsEmpty = false;
+                        fullName.val().trim() === "" ? nameIsEmpty = true : nameIsEmpty = false;
+                        password.val().trim().length < 8 ? passwordIsNotLong = true : passwordIsNotLong = false;
+                        !passwordIsNotLong && (password.val().trim() === retypedPassword.val().trim()) ? passwordsAreNotEqual = false : passwordsAreNotEqual = true;
+    
+                        nameIsEmpty ? nameValidation.css("color","#ff0000") : nameValidation.css("color","inherit");
+                        emailIsEmpty ? emailValidator.css("color","#ff0000") : emailValidator.css("color","inherit");
+                        passwordIsNotLong ? passwordLength.css("color","#ff0000") : passwordLength.css("color","inherit");
+                        passwordsAreNotEqual ? passwordMatch.css("color","#ff0000") : passwordMatch.css("color","inherit");
+    
+                        !nameIsEmpty && !emailIsEmpty && !passwordsAreNotEqual ? submitBtn.attr("disabled",false) : submitBtn.attr("disabled",true);
+                    };
+    
+                    $("input").focus(validateForm);
+                    $("input").blur(validateForm);
+                    // $("input").input(validateForm);
+                    $("input").on("input" , () => validateForm() );
+                    const loader = $(".loader");
+
+                    submitBtn.click(
+                        function (event) {
+                            event.preventDefault();
+                            $(".loader-cont").css("display","block");
+                            //send form
+                            const xmlHttp = new XMLHttpRequest();
+                            xmlHttp.onreadystatechange = function() {
+                                loader.css("width",`${(this.readyState / 4) * 100}%`);
+                            }
+                            xmlHttp.onload = function() {
+                                setTimeout(
+                                    () => $(".loader-cont").css("display","none") , 1000
+                                )
+                                
+                                let response = this.responseText;
+                                //handle response
+                                if(localStorage) {
+                                    localStorage.setItem("info",response)
+                                    location.assign("../admin_dashboard");
+                                } else {
+                                    alert("Process canceled!\nYour browser does not support local storage or it has been disabled. Enable all cookies and try again");
+                                }
+                            }
+                            xmlHttp.open("POST","http://localhost:4000/",true);
+                            xmlHttp.send(`formtype=signup&name=${fullName.val().trim()}&email=${email.val().trim()}&password=${password.val().trim()}`);
+                        }
+                    );
+                    if(!localStorage) {
+                        alert("Process canceled!\nYour browser does not support local storage or it has been disabled. Enable all cookies and try again");
+                    }
+                    if(localStorage.getItem("info")) {
+                        location.assign("../admin_dashboard");
+                    }
+                }
+            );
+        </script>
     </body>
 </html>

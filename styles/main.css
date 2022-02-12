@@ -8,6 +8,8 @@
     --grey-variant-2: #D2D3D5;
     --grey-variant-3: #f8f8f8;
     --blue: #4176BA;
+    --error-bg: #ffc3c3e1;
+    --opac-black: #00000022;
 }
 @font-face {
     font-family: roboto-regular;
@@ -59,6 +61,15 @@ html , body {
 }
 .default-orange-bg {
     background: var(--default-orange);
+}
+.opac-black-bg {
+    background: var(--opac-black);
+}
+.blue-bg {
+    background: var(--blue);
+}
+.white-bg {
+    background: var(--pure-white);
 }
 /*font sizes*/
 .smaller-text {
@@ -214,7 +225,7 @@ a[href="./signup"]:hover {
     margin: 5vh auto;
     padding: 10px;
 }
-input , select , textarea {
+input , select , textarea , .validation-message {
     height: 60px;
     width: 100%;
     min-width: 200px;
@@ -222,6 +233,11 @@ input , select , textarea {
     margin: 4vh auto;
     padding: 10px;
     border-radius: 10px;
+    background: var(--pure-white);
+}
+/*find a fix for autofill styling*/
+input:-webkit-autofill , input:autofill {
+    background: var(--pure-white) !important;/*I would use javascript later*/
 }
 input:focus , select:focus , textarea:focus {
     outline: 2px solid #00000022;
@@ -232,6 +248,9 @@ input::placeholder , textarea::placeholder {
 input:disabled {
     cursor: not-allowed;
     opacity: 0.5;
+}
+input[type="submit"]:hover {
+    opacity: 0.3;
 }
 textarea {
     height: 100px;
@@ -260,6 +279,33 @@ textarea {
     left: 0;
     background: #00000041;
     z-index: 1;
+}
+.validation-message {
+    border-radius: 0;
+    background: var(--error-bg);
+    height: auto;
+}
+.validation-message p {
+    margin-bottom: 10px;
+}
+.loader-cont {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.loader-main-cont {
+    height: 4px;
+    width: 100vw;
+}
+.loader {
+    height: 100%;
+    width: 1%;
+    transition: width 0.8s;
+}
+.logout-btn:hover {
+    color: var(--default-orange);
 }
 /*responsiveness*/
 @media only screen and (max-width:600px) {

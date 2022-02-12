@@ -24,18 +24,10 @@
         </header>
         <div class="main-content">
             <div class="section-in-dashboard flex">
-                <p class="larger-text grey-color centered-text">
-                    Articles
+                <p class="large-text grey-color centered-text">
+                    Posts
                 </p>
-                <p class="centered-tex large-text number-of-articles grey-color">
-                    0
-                </p>
-            </div>
-            <div class="section-in-dashboard flex">
-                <p class="larger-text grey-color centered-text">
-                    Videos
-                </p>
-                <p class="centered-tex large-text number-of-videos grey-color">
+                <p class="centered-text large-text number-of-articles grey-color">
                     0
                 </p>
             </div>
@@ -45,12 +37,16 @@
                 </span>
                 <i class="fas fa-pen default-orange-color"></i>
             </a>
-            <a href="../new_video" class="link-to-write-article mini-text grey-color grey-2-border flex">
+            <a href="../new_video" class="link-to-write-article mini-text grey-color grey-2-border flex" aria-disabled="">
                 <span>
                     New video
                 </span>
                 <i class="fas fa-upload default-orange-color"></i>
             </a>
+            <button class="no-bg no-border blue-color normal-text logout-btn section-text">
+                Log out
+                <i class="fas fa-sign-out-alt"></i>
+            </button>
             <p class="large-text section-text grey-color">
                 Important !!!
             </p>
@@ -65,5 +61,27 @@
             <br/>
             <br/>
         </div>
+        <script type="text/javascript">
+            $(document).ready(
+                () => {
+                    const logOutBtn = $(".logout-btn");
+                    if(!localStorage) {
+                        alert("Process canceled!\nYour browser does not support local storage or it has been disabled. Enable all cookies and try again");
+                    }
+                    logOutBtn.click(
+                        () => {
+                            if(confirm("You are about to logout\nClick cancel if you dont want to logout")) {
+                                localStorage.removeItem("info")
+                                location.assign("../");
+                            }
+                        }
+                    )
+                    if(!localStorage.getItem("info")) {
+                        alert("You are not logged in")
+                        location.assign("../#teacher");
+                    }
+                }
+            )
+        </script>
     </body>
 </html>

@@ -27,19 +27,24 @@
                 New video
             </p>
             <div class="form"><form id="video-post-form">
-                <input type="text" id="topic" placeholder="Topic" class="normal-text block grey-2-border grey-1-color" required >
-                <select id="subject" required placeholder="Password" class="normal-text block grey-2-border grey-1-color">
-                    <option value="None">
-                        Subject
-                    </option>
-                    <option value="None">
-                        Subject
-                    </option>
-                    <option value="None">
+                <input type="text" id="topic" placeholder="Topic" class="normal-text block grey-2-border grey-1-color input" required >
+                <select id="subject" required placeholder="Password" class="normal-text block grey-2-border grey-1-color input">
+                    <option value="">
                         Subject
                     </option>
                 </select>
-                <input type="text" id="youtube-video-url" placeholder="Youtube video url..." class="normal-text block grey-2-border grey-1-color" required >
+                <input type="url" id="content" placeholder="Youtube video url..." class="input normal-text block grey-2-border grey-1-color" required >
+                <div class="validation-message grey-color">
+                    <p id="topic-validation">
+                        Type topic
+                    </p>
+                    <p id="subject-validation">
+                        Select subject
+                    </p>
+                    <p id="content-omission">
+                        Paste valid url
+                    </p>
+                </div>
                 <input type="submit" value="Post" class="normal-text block white-color default-orange-bg no-border" disabled>
             </form>
             <p class="section-text grey-color normal-text">
@@ -47,5 +52,143 @@
             </p>
             </div>
         </div>
+
+        <div class="loader-cont none opac-black-bg">
+            <div class="loader-main-cont white-bg">
+                <div class="loader blue-bg"></div>
+            </div>
+        </div>
+<!--
+        <script type="text/javascript">
+            $(document).ready(
+                () => {
+                    const subjectList = [
+                        "Mathematics",
+                        "English",
+                        "Physics",
+                        "Chemistry",
+                        "Biology",
+                        "Agricultural_sci",
+                        "Civic",
+                        "Further_maths",
+                        "Technical_drawing",
+                        "Economics",
+                        "Lit_in_English",
+                        "Government",
+                        "History",
+                        "Book_keeping",
+                        "Commerce",
+                        "Food_and_Nut",
+                        "Geography"
+                    ];
+                    const subjectInput = $("#subject");
+                    subjectList.forEach(
+                        e => {
+                            subjectInput.html( subjectInput.html() + `
+                            <option value="${e}">
+                                ${e}
+                            </option>`)
+                        }
+                    )
+                }
+            )
+        </script>-->
+        <script type="text/javascript">
+            $(document).ready(
+                () => {
+                    const subjectList = [
+                        "Mathematics",
+                        "English",
+                        "Physics",
+                        "Chemistry",
+                        "Biology",
+                        "Agricultural_sci",
+                        "Civic",
+                        "Further_maths",
+                        "Technical_drawing",
+                        "Economics",
+                        "Lit_in_English",
+                        "Government",
+                        "History",
+                        "Book_keeping",
+                        "Commerce",
+                        "Food_and_Nut",
+                        "Geography"
+                    ];
+                    const subject= $("#subject");
+                    subjectList.forEach(
+                        e => {
+                            subject.html( subject.html() + `
+                            <option value="${e}">
+                                ${e}
+                            </option>`)
+                        }
+                    )
+    
+                    const topic = $("#topic") , content = $("#content") , submitBtn = $("input[type='submit']");
+    
+                    const topicValidation = $("#topic-validation") , subjectValidation = $("#subject-validation") , contentOmmission = $("#content-omission");
+                    
+                    let topicIsEmpty = true , subjectIsEmpty = true , contentIsEmpty = true;
+    
+    
+                    const validateForm = () => {
+                        topic.val().trim() === "" ? topicIsEmpty = true : topicIsEmpty = false;
+                        subject.val().trim() === "" ? subjectIsEmpty = true : subjectIsEmpty = false;
+                        content.val().trim() === "" ? contentIsEmpty = true : contentIsEmpty = false;
+    
+                        topicIsEmpty ? topicValidation.css("color","#ff0000") : topicValidation.css("color","inherit");
+                        subjectIsEmpty ? subjectValidation.css("color","#ff0000") : subjectValidation.css("color","inherit");
+                        contentIsEmpty ? contentOmmission.css("color","#ff0000") : contentOmmission.css("color","inherit");
+    
+                        !subjectIsEmpty && !topicIsEmpty && !contentIsEmpty ? submitBtn.attr("disabled",false) : submitBtn.attr("disabled",true);
+                    };
+    
+                    $(".input").focus(validateForm);
+                    $(".input").blur(validateForm);
+                    // $("input").input(validateForm);
+                    $(".input").on("input" , () => validateForm() );
+                    const loader = $(".loader");
+
+                    if(!localStorage) {
+                        alert("Process canceled!\nYour browser does not support local storage or it has been disabled. Enable all cookies and try again");
+                    }
+                    if(!localStorage.getItem("info")) {
+                        location.assign("../");
+                    }
+
+                    let info = JSON.parse(localStorage.getItem("info"));
+
+                    submitBtn.click(
+                        function (event) {
+                            event.preventDefault();
+                            $(".loader-cont").css("display","block");
+                            //send form
+                            const xmlHttp = new XMLHttpRequest();
+                            xmlHttp.onreadystatechange = function() {
+                                loader.css("width",`${(this.readyState / 4) * 100}%`);
+                            }
+                            xmlHttp.onload = function() {
+                                setTimeout(
+                                    () => $(".loader-cont").css("display","none") , 1000
+                                )
+                                
+                                let response = this.responseText;
+                                //handle response
+                                if(response == "posted") {
+                                    alert("Item posted successfully");
+                                    location.assign("../admin_dashboard");
+                                }
+                                else {
+                                    alert("Could not post item because the topic has already been disscussed\nRename the topic and post the item again")
+                                }
+                            }
+                            xmlHttp.open("POST","http://localhost:4000/",true);
+                            xmlHttp.send(`formtype=itemPost&topic=${topic.val().trim()}&subject=${subject.val().trim().toLowerCase()}&content=${content.val().trim()}youtubeVideoLink&writer=${info[0].name}&writerId=${info[0].id}`);
+                        }
+                    );
+                }
+            )
+        </script>
     </body>
 </html>

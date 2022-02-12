@@ -27,6 +27,9 @@
                Subject name
             </p>
             <div class="links-to-available-items-cont">
+                <p class="centered-text mini-text grey-color">
+                    Loading...
+                </p>
             </div>
             <div class="links-to-help-center">
                 <a href="../#teacher" class="block">
@@ -50,54 +53,77 @@
                     const parsedSubjectName = unparsedSubjectName.replace(plusSign," ")
                     subjectNameCont.text(parsedSubjectName)
 
-                    const subjectList = [
+                    const topicList = [
                     ];
-                    
-                    //we would use ajax to make requests
+
+                    //ajax
+                    const xmlHttp = new XMLHttpRequest()
+                    xmlHttp.onload = function() {
+                       let response = this.responseText;
+                       if(response !== "no topics" && response !== "table does not exist") {
+                           const validResponse = Array.from(JSON.parse(response));
+                           validResponse.forEach(
+                               e => {
+                                   topicList.push(e.topic);
+                               }
+                           );
+                       }
+                    }
+                    xmlHttp.open("POST","http://localhost:4000/",true)
+                    //xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded")
+                    xmlHttp.send(`${requestData}`)
+
+
                     const subjectLinksCont = $(".links-to-available-items-cont");
 
-                    if(subjectList.length === 0) {
-                        subjectLinksCont.html(`
-                        <p class="centered-text grey-color mini-text">Sorry, no items are available for this subject yet.<br/>Check later</p>
-                        `)
-                    }
-                    subjectList.forEach (
-                        e => {
-                            subjectLinksCont.html(subjectLinksCont.html() + 
-                            `
-                            <a class="link-to-available-subject flex grey-1-color mini-text grey-2-border" >
-                                <span class="topic-name">
-                                    ${e.slice(0,15)}
-                                </span>
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                            `);
-                        }
+                    let appendTopics = setInterval(
+                        () => {
+                            if(topicList.length === 0) {
+                                subjectLinksCont.html(`
+                                <p class="centered-text grey-color mini-text">Sorry, no items are available for this subject yet.<br/>Check later</p>
+                                `)
+                            } else {
+                                subjectLinksCont.html("");
+                                topicList.forEach (
+                                    e => {
+                                        subjectLinksCont.html(subjectLinksCont.html() + 
+                                        `
+                                        <a class="link-to-available-subject flex grey-1-color mini-text grey-2-border" >
+                                            <span class="topic-name">
+                                                ${e.slice(0,25)}
+                                            </span>
+                                            <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                        `);
+                                    }
+                                )
+                                const linksToAvailableTopics = Array.from($(".link-to-available-subject"));
+                                linksToAvailableTopics.forEach(
+                                    e => {
+                                        e.href = `../read/?topic=${e.children[0].innerHTML.trim()}&subject=${parsedSubjectName}`;
+                                        e.id = `${e.children[0].innerHTML.trim().split(" ")[0]}`;
+                                    }
+                                )
+                               const linkBtns = $(".link-to-available-subject");
+                               //adding ripple effects to the link btns
+                               linkBtns.click(
+                                   () => {
+                                       ripple.createRipple({
+                                           "rippleParentId" : `${event.target.id}`,
+                                           "height" : 70,
+                                           "width" : 318,
+                                           "background" : "orange",
+                                           "foreground" : "#ff550077",
+                                           "time" : 8,
+                                           "type" : "",
+                                           "increaseBy" : 4
+                                       })
+                                   }
+                               );
+                                clearInterval(appendTopics)
+                            }
+                        },4000
                     )
-
-                    const linksToAvailableTopics = Array.from($(".link-to-available-subject"));
-                    linksToAvailableTopics.forEach(
-                        e => {
-                            e.href = `../read/?topic=${e.children[0].innerHTML.trim()}`;
-                            e.id = `${e.children[0].innerHTML.trim().split(" ")[0]}`;
-                        }
-                    )
-                   const linkBtns = $(".link-to-available-subject");
-                   //adding ripple effects to the link btns
-                   linkBtns.click(
-                       () => {
-                           ripple.createRipple({
-                               "rippleParentId" : `${event.target.id}`,
-                               "height" : 70,
-                               "width" : 318,
-                               "background" : "orange",
-                               "foreground" : "#ff550077",
-                               "time" : 8,
-                               "type" : "",
-                               "increaseBy" : 4
-                           })
-                       }
-                   );
                 }
             )
         </script>

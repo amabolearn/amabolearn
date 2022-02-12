@@ -28,10 +28,74 @@
             </p>
             <div class="topic-contents grey-color normal-text">
                 <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet molestiae doloribus quibusdam itaque fuga accusamus, aperiam architecto illo beatae nisi possimus modi officiis, assumenda aspernatur ipsum tenetur atque hic dignissimos enim! Sequi ipsa facilis dolor illo atque voluptates rerum quaerat sit suscipit harum vitae provident asperiores in deserunt, voluptas aut cum ab! Nam officia minus corporis dolores commodi tempora amet est iure in rem ipsam, non eius dolorem unde. Omnis amet sunt soluta veritatis cum dolorum voluptate, culpa optio libero quam pariatur maiores? Sapiente quaerat nemo placeat modi exercitationem eum deleniti. Cupiditate recusandae, consectetur sunt minima nisi architecto labore est alias facere, explicabo ipsa, doloribus debitis mollitia harum eaque at quidem saepe aliquam reprehenderit inventore. Aliquam, iste dolorem vero dolorum cum maxime quas sint voluptatem consequatur accusantium? Iste culpa illum soluta nemo commodi veniam doloribus eum eos beatae enim fugit error similique maxime vitae voluptas excepturi repudiandae, pariatur totam tenetur eaque delectus dolore! Sit error aliquam omnis distinctio? Quidem quaerat totam odio expedita maxime aliquam deserunt, fugiat consequuntur quibusdam sint voluptas atque impedit facilis recusandae maiores tempore ratione veritatis dolorum fuga et, laudantium nostrum officiis dicta repellat! Sed ipsum at nihil eligendi totam nulla modi praesentium, odio molestiae quod ab.
+                    loading...
                 </p>
             </div>
-            <p class="mini-text" id="author">Writer's name</p>
+            <p class="small-text" id="author">Writer's name</p>
         </div>
+        <script type="text/javascript">
+            //useful functions, objects , consts, variables...
+            const ripple = new Ripple();
+            //jquery
+            $(document).ready(
+                () => {
+                    const pageUrl = window.location.href;
+                    const urlObject = new URL(pageUrl);
+                    const requestData = urlObject.searchParams;
+                    
+                    const topicCont = $("#topic");
+                    const plusSign = /[+]/g;
+                    const unparsedSubjectName = requestData.toString().slice(requestData.toString().indexOf("=") + 1 , requestData.toString().indexOf("&"));
+                    const parsedSubjectName = unparsedSubjectName.replace(plusSign," ")
+                    topicCont.text(parsedSubjectName)
+
+                    const topicContent = [];
+
+                    //ajax
+                    const xmlHttp = new XMLHttpRequest()
+                    xmlHttp.onload = function() {
+                       let response = this.responseText;
+                       if(response !== "no such content available" && response !== "table does not exist") {
+                           const validResponse = Array.from(JSON.parse(response));
+                           topicContent.push(validResponse[0].content);
+                           authorNameCont.text(validResponse[0].writerName);
+                       }
+                    }
+                    xmlHttp.open("POST","http://localhost:4000/",true)
+                    //xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded")
+                    xmlHttp.send(`${requestData}`)
+
+                    const authorNameCont = $("#author");
+
+                    const topicContentCont = $(".topic-contents p");
+                    topicContentCont.css("height" , "auto");
+
+                    let appendItem = setInterval(
+                        () => {
+                            if(topicContent.length === 0) {
+                                topicContentCont.html(`
+                                <p class="centered-text grey-color mini-text">Sorry, could not fetch item.<br/>Try again or check your internet connection</p>
+                                `)
+                            }
+                            else {
+                                topicContentCont.html("");
+                                topicContent.forEach (
+                                    e => {
+                                        const regex = "youtubeVideoLink";
+                                        if(regex.search(toString(e))) {
+                                            topicContentCont.html(topicContentCont.html() + `<a href="${e.slice(0 , e.search(regex) )}" class="mini-text blue-color block">Watch video on youtube    <i class="fas fa-arrow-right" style="transform: rotate(-30deg);"></i></a>`);
+                                        }
+                                        else {
+                                            topicContentCont.html(topicContentCont.html() + `${e}`);
+                                        }
+                                    }
+                                )
+                                clearInterval(appendItem)
+                            }
+                        },2000
+                    )
+                }
+            )
+        </script>
     </body>
 </html>
