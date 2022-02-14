@@ -155,7 +155,7 @@
                                     alert("Could not post item because the topic has already been disscussed\nRename the topic and post the item again")
                                 }
                             }
-                            xmlHttp.open("POST","http://localhost:4000/",true);
+                            xmlHttp.open("POST","https://amabolearn.herokuapp.com/",true);
                             xmlHttp.send(`formtype=itemPost&topic=${topic.val().trim()}&subject=${subject.val().trim().toLowerCase()}&content=${content.val().trim()}youtubeVideoLink&writer=${info[0].name}&writerId=${info[0].id}`);
                         }
                     );
