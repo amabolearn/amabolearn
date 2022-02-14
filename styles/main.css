@@ -253,20 +253,21 @@ textarea {
     height: 100px;
 }
 .section-in-dashboard {
-    height: 30vh;
+    height: auto;
     flex-flow: column;
     justify-content: space-around;
     box-shadow: 0px 0px 9px 1px #00000011;
+    padding: 60px 40px;
 }
 .link-to-write-article , .section-in-dashboard {
     width: 75%;
     margin: 15vh auto;
     align-items: center;
     border-radius: 10px;
-    padding: 12px 40px;
 }
 .link-to-write-article {
     justify-content: space-between;
+    padding: 12px 40px;
 }
 .side-menu {
     width: 100vw;
