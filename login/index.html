@@ -127,7 +127,7 @@
                                     }
                                 }
                             }
-                            xmlHttp.open("POST","https://amabolearn.herokuapp.com/",true);
+                            xmlHttp.open("POST","https://amabolearn.herokuapp.com",true);
                             xmlHttp.send(`formtype=login&email=${email.val().trim()}&password=${password.val().trim()}`);
                         }
                     );
