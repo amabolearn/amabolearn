@@ -131,6 +131,7 @@
                                     alert("Process canceled!\nYour browser does not support local storage or it has been disabled. Enable all cookies and try again");
                                 }
                             }
+                            //host => https://amabolearn.herokuapp.com/
                             xmlHttp.open("POST","https://amabolearn.herokuapp.com/",true);
                             xmlHttp.send(`formtype=signup&name=${fullName.val().trim()}&email=${email.val().trim()}&password=${password.val().trim()}`);
                         }

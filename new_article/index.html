@@ -154,7 +154,7 @@
                                 }
                             }
                             xmlHttp.open("POST","https://amabolearn.herokuapp.com/",true);
-                            xmlHttp.send(`formtype=itemPost&topic=${topic.val().trim()}&subject=${subject.val().trim().toLowerCase()}&content=${content.val().trim()}&writer=${info[0].name}&writerId=${info[0].id}`);
+                            xmlHttp.send(`formtype=itemPost&topic=${topic.val().trim()}&subject=${subject.val().trim()}&content=${content.val().trim()}&writer=${info[0].name}`);
                         }
                     );
                 }

@@ -90,10 +90,10 @@
                                     e => {
                                         const regex = /youtubeVideoLink/;
                                         if(regex.test(e)) {
-                                            topicContentCont.html(topicContentCont.html() + `<a href="${e.slice(0 , e.search(regex) )}" class="mini-text blue-color block">Watch video on youtube    <i class="fas fa-arrow-right" style="transform: rotate(-30deg);"></i></a>`);
+                                            topicContentCont.html(`<a href="${e.slice(0 , e.search(regex) )}" class="mini-text blue-color block">Watch video on youtube    <i class="fas fa-arrow-right" style="transform: rotate(-30deg);"></i></a>`);
                                         }
                                         else {
-                                            topicContentCont.html(topicContentCont.html() + `${e}`);
+                                            topicContentCont.html(e);
                                         }
                                     }
                                 )

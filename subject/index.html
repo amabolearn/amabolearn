@@ -68,10 +68,10 @@
                     xmlHttp.onload = function() {
                        let response = this.responseText;
                        if(response !== "no topics" && response !== "table does not exist") {
-                           const validResponse = Array.from(JSON.parse(response));
+                           const validResponse = JSON.parse(response);
                            validResponse.forEach(
                                e => {
-                                   topicList.push(e.topic);
+                                   topicList.push(e);
                                }
                            );
                        }
@@ -95,7 +95,7 @@
                                     e => {
                                         subjectLinksCont.html(subjectLinksCont.html() + 
                                         `
-                                        <a class="link-to-available-subject flex grey-1-color mini-text grey-2-border" >
+                                        <a class="link-to-available-subject flex grey-1-color mini-text grey-2-border" href = "../read/?topic=${e}&subject=${parsedSubjectName}">
                                             <span class="topic-name">
                                                 ${e.slice(0,25)}
                                             </span>
@@ -107,7 +107,6 @@
                                 const linksToAvailableTopics = Array.from($(".link-to-available-subject"));
                                 linksToAvailableTopics.forEach(
                                     e => {
-                                        e.href = `../read/?topic=${e.children[0].innerHTML.trim()}&subject=${parsedSubjectName}`;
                                         e.id = `${e.children[0].innerHTML.trim().split(" ")[0]}`;
                                     }
                                 )
