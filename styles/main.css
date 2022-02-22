@@ -225,12 +225,14 @@ a[href="./signup"]:hover {
     margin: 5vh auto;
     padding: 10px;
 }
-input , select , textarea , .validation-message {
-    height: 60px;
-    width: 100%;
+input , select , textarea , .validation-message , .article-content-cont{
     min-width: 200px;
     max-width: 300px;
     margin: 4vh auto;
+}
+input , select , textarea , .validation-message{
+    height: 60px;
+    width: 100%;
     padding: 10px;
     border-radius: 8px;
     background: var(--pure-white);
