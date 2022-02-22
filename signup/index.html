@@ -33,10 +33,34 @@
             <p class="large-text grey-color section-text centered-text">
                 Admin registration
             </p>
+            <br/>
+            <p class="mini-text grey-color section-text animate__animated animate__slideInLeft">
+                To become an admin on this platform, you would be interviewed online by the owners of this platform and if you pass the interview, an access pin would be sent to you which you would use to signup to become an admin
+                <br/>
+                <br/>
+                Kindly send an email to <a href="mailto:amabolearn@gmail.com" class="blue-color">our email address</a> describing how you can help this platform if you are an admin
+                <br/>
+                <br/>
+                After acquiring the access pin , fill the <a href="#signup-form" class="blue-color">signup form</a>
+            </p>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <hr/>
+            <br/>
+            <br/>
+            <br/>
+            <p class="large-text grey-color section-text centered-text" id="signup-form">
+                Admin registration form
+            </p>
             <div class="form">
-                <form id="signup-form">
+                <form>
                     <input type="text" id="full-name" required placeholder="Full name" class="normal-text block grey-2-border grey-1-color">
                     <input type="email" id="email" required placeholder="Email address" class="normal-text block grey-2-border grey-1-color">
+                    <input type="password" id="access-pin" required placeholder="Access pin" class="normal-text block grey-2-border grey-1-color">
                     <input type="password" id="password" required placeholder="Password" class="normal-text block grey-2-border grey-1-color">
                     <input type="password" id="password-retyped" required placeholder="Retype password" class="normal-text block grey-2-border grey-1-color">
 
@@ -66,6 +90,9 @@
             <p class="grey-color section-text small-text centered-text">
                 copyright &copy; <span class="present-year-cont">2022</span> Amabo learn
             </p>
+            <br/>
+            <br/>
+            <br/>
         </div>
 
         <div class="loader-cont none opac-black-bg">
@@ -82,7 +109,7 @@
             $(document).ready(
                 () => {
     
-                    const fullName = $("#full-name") , email = $("#email") , password = $("#password") , retypedPassword = $("#password-retyped") , submitBtn = $("input[type='submit']");
+                    const fullName = $("#full-name") , email = $("#email") , password = $("#password") , retypedPassword = $("#password-retyped") , submitBtn = $("input[type='submit']") , accessPin = $("#access-pin");
     
                     const nameValidation = $("#full-name-validation") , emailValidator = $("#email-must-be-valid") , passwordLength = $("#password-must-be-long") , passwordMatch = $("#password-must-match");
                     
@@ -99,7 +126,7 @@
                         passwordIsNotLong ? passwordLength.css("color","#ff0000") : passwordLength.css("color","inherit");
                         passwordsAreNotEqual ? passwordMatch.css("color","#ff0000") : passwordMatch.css("color","inherit");
     
-                        !nameIsEmpty && !emailIsEmpty && !passwordsAreNotEqual ? submitBtn.attr("disabled",false) : submitBtn.attr("disabled",true);
+                        !nameIsEmpty && !emailIsEmpty && !passwordsAreNotEqual && accessPin.val().trim() !== "" ? submitBtn.attr("disabled",false) : submitBtn.attr("disabled",true);
                     };
     
                     $("input").focus(validateForm);
@@ -124,16 +151,20 @@
                                 
                                 let response = this.responseText;
                                 //handle response
-                                if(localStorage) {
-                                    localStorage.setItem("info",response)
-                                    location.assign("../admin_dashboard");
+                                if(response == "Access pin is incorrect") {
+                                    alert(response + "\nTry following the instructions above")
                                 } else {
-                                    alert("Process canceled!\nYour browser does not support local storage or it has been disabled. Enable all cookies and try again");
+                                    if(localStorage) {
+                                        localStorage.setItem("info",response)
+                                        location.assign("../admin_dashboard");
+                                    } else {
+                                        alert("Process canceled!\nYour browser does not support local storage or it has been disabled. Enable all cookies and try again");
+                                    }
                                 }
                             }
                             //host => https://amabolearn.herokuapp.com/
-                            xmlHttp.open("POST","https://amabolearn.herokuapp.com/",true);
-                            xmlHttp.send(`formtype=signup&name=${fullName.val().trim()}&email=${email.val().trim()}&password=${password.val().trim()}`);
+                            xmlHttp.open("POST","http://localhost:4000/",true);
+                            xmlHttp.send(`formtype=signup&name=${fullName.val().trim()}&email=${email.val().trim()}&password=${password.val().trim()}&accessPin=${accessPin.val().trim()}`);
                         }
                     );
                     if(!localStorage) {
@@ -142,6 +173,9 @@
                     if(localStorage.getItem("info")) {
                         location.assign("../admin_dashboard");
                     }
+                    const presentYearCont = $(".present-year-cont");
+                    const date = new Date();
+                    presentYearCont.text(date.getFullYear());
                 }
             );
         </script>

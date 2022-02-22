@@ -30,15 +30,20 @@
             </a>
         </header>
         <div class="main-content">
-            <p class="large-text grey-color section-text centered-text" id="topic">
-               Topic
-            </p>
-            <div class="topic-contents grey-color normal-text">
+            <div class="topic-contents grey-color">
                 <p>
                     loading...
                 </p>
             </div>
-            <p class="small-text" id="author">Writer's name</p>
+            <p class="small-text" id="author"></p>
+            <br/>
+            <br/>
+            <br/>
+            <p class="grey-color section-text small-text centered-text">
+                copyright &copy; <span class="present-year-cont">2022</span> Amabo learn
+            </p>
+            <br/>
+            <br/>
         </div>
         <script type="text/javascript">
             //useful functions, objects , consts, variables...
@@ -50,11 +55,6 @@
                     const urlObject = new URL(pageUrl);
                     const requestData = urlObject.searchParams;
                     
-                    const topicCont = $("#topic");
-                    const plusSign = /[+]/g;
-                    const unparsedSubjectName = requestData.toString().slice(requestData.toString().indexOf("=") + 1 , requestData.toString().indexOf("&"));
-                    const parsedSubjectName = unparsedSubjectName.replace(plusSign," ")
-                    topicCont.text(parsedSubjectName)
 
                     const topicContent = [];
 
@@ -63,18 +63,18 @@
                     xmlHttp.onload = function() {
                        let response = this.responseText;
                        if(response !== "no such content available" && response !== "table does not exist") {
-                           const validResponse = Array.from(JSON.parse(response));
+                           const validResponse = JSON.parse(response);
                            topicContent.push(validResponse[0].content);
                            authorNameCont.text(validResponse[0].writerName);
                        }
                     }
-                    xmlHttp.open("POST","https://amabolearn.herokuapp.com/",true)
+                    xmlHttp.open("POST","http://localhost:4000/",true)
                     //xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded")
                     xmlHttp.send(`${requestData}`)
 
                     const authorNameCont = $("#author");
 
-                    const topicContentCont = $(".topic-contents p");
+                    const topicContentCont = $(".topic-contents");
                     topicContentCont.css("height" , "auto");
 
                     let appendItem = setInterval(
@@ -88,19 +88,16 @@
                                 topicContentCont.html("");
                                 topicContent.forEach (
                                     e => {
-                                        const regex = /youtubeVideoLink/;
-                                        if(regex.test(e)) {
-                                            topicContentCont.html(`<a href="${e.slice(0 , e.search(regex) )}" class="mini-text blue-color block">Watch video on youtube    <i class="fas fa-arrow-right" style="transform: rotate(-30deg);"></i></a>`);
-                                        }
-                                        else {
-                                            topicContentCont.html(e);
-                                        }
+                                        topicContentCont.html(e);
                                     }
                                 )
                                 clearInterval(appendItem)
                             }
                         },2000
                     )
+                    const presentYearCont = $(".present-year-cont");
+                    const date = new Date();
+                    presentYearCont.text(date.getFullYear());
                 }
             )
         </script>

@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="../styles/css/all.css"/>
         <script type="text/javascript" src="../scripts/jquery.js"></script>
         <script type="text/javascript" src="../scripts/ripple.js"></script>
+        <script type="text/javascript" src="../node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
         <!--extras-->
         <link rel="icon" href="../images/favicon.png" sizes="16x16"/>
         <!--custom-->
@@ -40,7 +41,13 @@
                         Subject
                     </option>
                 </select>
-                <textarea type="text" id="content" placeholder="Content..." class="normal-text block grey-2-border grey-1-color input" required ></textarea>
+                <br/>
+                <p class="grey-color normal-text centered-text">
+                    Type article contents below
+                </p>
+                <br/>
+                <div id="content"></div>
+                <br/>
                 <div class="validation-message grey-color">
                     <p id="topic-validation">
                         Type topic
@@ -66,6 +73,7 @@
         <script type="text/javascript">
             $(document).ready(
                 () => {
+
                     const subjectList = [
                         "Mathematics",
                         "English",
@@ -105,7 +113,7 @@
                     const validateForm = () => {
                         topic.val().trim() === "" ? topicIsEmpty = true : topicIsEmpty = false;
                         subject.val().trim() === "" ? subjectIsEmpty = true : subjectIsEmpty = false;
-                        content.val().trim().length < 200 ? contentIsEmpty = true : contentIsEmpty = false;
+                        content.html().trim().length < 200 ? contentIsEmpty = true : contentIsEmpty = false;
     
                         topicIsEmpty ? topicValidation.css("color","#ff0000") : topicValidation.css("color","inherit");
                         subjectIsEmpty ? subjectValidation.css("color","#ff0000") : subjectValidation.css("color","inherit");
@@ -113,6 +121,20 @@
     
                         !subjectIsEmpty && !topicIsEmpty && !contentIsEmpty ? submitBtn.attr("disabled",false) : submitBtn.attr("disabled",true);
                     };
+
+                    
+                    ClassicEditor
+                        .create( document.querySelector( '#content' ) )
+                        .then( editor => {
+                            editor.model.document.on( 'change:data', () => {
+                                content.html(editor.getData())
+                                validateForm()
+                            } );
+                        } )
+                        .catch( error => {
+                            console.error( error );
+                        } );
+
     
                     $(".input").focus(validateForm);
                     $(".input").blur(validateForm);
@@ -153,8 +175,8 @@
                                     alert("Could not post item because the topic has already been disscussed\nRename the topic and post the item again")
                                 }
                             }
-                            xmlHttp.open("POST","https://amabolearn.herokuapp.com/",true);
-                            xmlHttp.send(`formtype=itemPost&topic=${topic.val().trim()}&subject=${subject.val().trim()}&content=${content.val().trim()}&writer=${info[0].name}`);
+                            xmlHttp.open("POST","http://localhost:4000/",true);
+                            xmlHttp.send(`formtype=itemPost&topic=${topic.val().trim()}&subject=${subject.val().trim()}&content=${content.html().trim()}&writer=${info[0].name}`);
                         }
                     );
                 }
