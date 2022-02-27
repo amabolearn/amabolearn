@@ -130,7 +130,8 @@
                                     }
                                 }
                             }
-                            xmlHttp.open("POST","https://amabolearn.herokuapp.com/",true);
+                            xmlHttp.open("POST",`../requests/login.php`,true);
+                            xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded")
                             xmlHttp.send(`formtype=login&email=${email.val().trim()}&password=${password.val().trim()}`);
                         }
                     );

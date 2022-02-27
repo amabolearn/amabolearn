@@ -68,9 +68,6 @@ html , body {
 .blue-bg {
     background: var(--blue);
 }
-.white-bg {
-    background: var(--pure-white);
-}
 /*font sizes*/
 .smaller-text {
     font-size: x-small;
@@ -225,16 +222,22 @@ a[href="./signup"]:hover {
     margin: 5vh auto;
     padding: 10px;
 }
-input , select , textarea , .validation-message , .article-content-cont{
+input , select , textarea , .validation-message , .article-content-cont , .input-clone {
     min-width: 200px;
     max-width: 300px;
     margin: 4vh auto;
 }
-input , select , textarea , .validation-message{
+input[type="submit"] {
+    min-width: 170px;
+    max-width: 240px;
+}
+input , select , textarea , .validation-message , .input-clone {
     height: 60px;
     width: 100%;
     padding: 10px;
     border-radius: 8px;
+}
+input , select , textarea , .validation-message {
     background: var(--pure-white);
 }
 /*find a fix for autofill styling*/
@@ -303,6 +306,54 @@ input:disabled {
 }
 .logout-btn:hover {
     color: var(--default-orange);
+}
+li {
+    margin-left: 15px;
+}
+/*the post preview template*/
+.preview {
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+.preview-cont {
+    width: 90vw;
+    max-width: 600px;
+    height: 100vh;
+    overflow-y: auto;
+    border-top: none;
+    border-bottom: none;
+}
+.preview-header {
+    width: 100%;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+}
+.preview-header .preview-toggle {
+    padding: 10px;
+}
+.preview-cont .topic-contents {
+    width: 100%;
+}
+/*styling the auto generated tags from the text editor*/
+.topic-contents * {
+    margin-bottom: 0.4vh;
+}
+.topic-contents p {
+    margin-bottom: 0.7vh;
+}
+.topic-contents h1 , .topic-contents h2 , .topic-contents h3 , .topic-contents h4 {
+    margin: 2vh 0;
+}
+.topic-contents td {
+    border: 0.2px solid var(--grey-variant-2);
+    padding: 10px;
+    margin: 0;
 }
 /*responsiveness*/
 @media only screen and (max-width:600px) {

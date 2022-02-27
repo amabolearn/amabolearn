@@ -76,9 +76,9 @@
                            );
                        }
                     }
-                    xmlHttp.open("POST","https://amabolearn.herokuapp.com/",true)
-                    //xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded")
-                    xmlHttp.send(`${requestData}`)
+                    xmlHttp.open("POST","../requests/topics.php",true);
+                    xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                    xmlHttp.send(`${requestData}`);
 
 
                     const subjectLinksCont = $(".links-to-available-items-cont");

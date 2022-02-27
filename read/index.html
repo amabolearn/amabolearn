@@ -68,8 +68,8 @@
                            authorNameCont.text(validResponse[0].writerName);
                        }
                     }
-                    xmlHttp.open("POST","https://amabolearn.herokuapp.com/",true)
-                    //xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded")
+                    xmlHttp.open("POST","../requests/contents.php",true)
+                    xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
                     xmlHttp.send(`${requestData}`)
 
                     const authorNameCont = $("#author");

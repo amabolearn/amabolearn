@@ -34,35 +34,56 @@
             <p class="large-text grey-color section-text centered-text">
                 New article
             </p>
-            <div class="form"><form id="article-post-form">
-                <input type="text" id="topic" placeholder="Topic" class="normal-text block grey-2-border grey-1-color input" required >
-                <select id="subject" required placeholder="Password" class="normal-text block grey-2-border grey-1-color input">
-                    <option value="">
-                        Subject
-                    </option>
-                </select>
-                <br/>
-                <p class="grey-color normal-text centered-text">
-                    Type article contents below
-                </p>
-                <br/>
-                <div class="article-content-cont">
-                    <div id="content"></div>
-                </div>
-                <br/>
-                <div class="validation-message grey-color">
-                    <p id="topic-validation">
-                        Type topic
+            <div class="form">
+                <form id="article-post-form">
+                    <input type="text" id="topic" placeholder="Topic" class="normal-text block grey-2-border grey-1-color input" required >
+                    <select id="subject" required placeholder="Password" class="normal-text block grey-2-border grey-1-color input">
+                        <option value="">
+                            Subject
+                        </option>
+                    </select>
+                    <br/>
+                    <p class="grey-color normal-text centered-text">
+                        Type article contents below
                     </p>
-                    <p id="subject-validation">
-                        Select subject
-                    </p>
-                    <p id="content-omission">
-                        Contents must not be less than 200 characters
-                    </p>
-                </div>
-                <input type="submit" value="Post" class="normal-text block white-color default-orange-bg no-border input" disabled>
-            </form>
+                    <br/>
+                    <div class="article-content-cont">
+                        <div id="content-input"></div>
+                    </div>
+                    <br/>
+                    <div class="validation-message grey-color">
+                        <p id="topic-validation">
+                            Type topic
+                        </p>
+                        <p id="subject-validation">
+                            Select subject
+                        </p>
+                        <p id="content-omission">
+                            Contents must not be less than 1000 characters
+                        </p>
+                    </div>
+
+                    <!--Preview template-->
+                    <div class="preview flex opac-black-bg none">
+                        <div class="preview-cont white-bg grey-2-border">
+                            <header class="preview-header default-orange-bg flex">
+                                <p class="white-color mini-text block">
+                                    Article preview
+                                </p>
+                                <button class="preview-toggle block no-border blue-color small-text white-bg">Close</button>
+                            </header>
+                            <div class="topic-contents grey-color">
+                                <p class="centered-text">
+                                    The preview of you article would appear here
+                                </p>
+                            </div>
+                            <br/>
+                            <input type="submit" value="Post" class="normal-text block white-color default-orange-bg no-border input" disabled>
+                        </div>
+                    </div>
+                    <textarea id="content" class="none"></textarea>
+                    <button class="normal-text block white-color default-orange-bg no-border input-clone preview-toggle">Preview</button>
+                </form>
             </div>
         </div>
 
@@ -115,7 +136,7 @@
                     const validateForm = () => {
                         topic.val().trim() === "" ? topicIsEmpty = true : topicIsEmpty = false;
                         subject.val().trim() === "" ? subjectIsEmpty = true : subjectIsEmpty = false;
-                        content.html().trim().length < 200 ? contentIsEmpty = true : contentIsEmpty = false;
+                        content.val().trim().length < 1000 ? contentIsEmpty = true : contentIsEmpty = false;
     
                         topicIsEmpty ? topicValidation.css("color","#ff0000") : topicValidation.css("color","inherit");
                         subjectIsEmpty ? subjectValidation.css("color","#ff0000") : subjectValidation.css("color","inherit");
@@ -126,11 +147,15 @@
 
                     
                     ClassicEditor
-                        .create( document.querySelector( '#content' ) )
+                        .create( document.querySelector( '#content-input' ) )
                         .then( editor => {
                             editor.model.document.on( 'change:data', () => {
-                                content.html(editor.getData())
-                                validateForm()
+                                content.val(editor.getData());
+                                editor.getData().trim() === "" ? $(".topic-contents").html(`
+                                    <p class="centered-text">
+                                        The preview of you article would appear here
+                                    </p>`) : $(".topic-contents").html(editor.getData());
+                                validateForm();
                             } );
                         } )
                         .catch( error => {
@@ -152,6 +177,26 @@
                     }
 
                     let info = JSON.parse(localStorage.getItem("info"));
+
+                    $("form button").click(
+                        event => {
+                            event.preventDefault();
+                        }
+                    );
+                    
+                    let preview_is_shown = false , preview = $(".preview");
+                    $(".preview-toggle").click(
+                        () => {
+                            if(preview_is_shown) {
+                                preview.css("display","none");
+                                preview_is_shown = false;
+                            }
+                            else {
+                                preview.css("display","flex");
+                                preview_is_shown = true;
+                            }
+                        }
+                    );
 
                     submitBtn.click(
                         function (event) {
@@ -177,8 +222,9 @@
                                     alert("Could not post item because the topic has already been disscussed\nRename the topic and post the item again")
                                 }
                             }
-                            xmlHttp.open("POST","https://amabolearn.herokuapp.com/",true);
-                            xmlHttp.send(`formtype=itemPost&topic=${topic.val().trim()}&subject=${subject.val().trim()}&content=${content.html().trim()}&writer=${info[0].name}`);
+                            xmlHttp.open("POST","../requests/post.php",true);
+                            xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                            xmlHttp.send(`formtype=itemPost&topic=${topic.val().trim()}&subject=${subject.val().trim()}&content=${content.val().trim()}&writer=${info[0].name}`);
                         }
                     );
                 }
