@@ -28,3 +28,4 @@ if ($subject != "undefined" && $subject != "" && $subject) {
         echo ("table does not exist");
     }
 }
+?>

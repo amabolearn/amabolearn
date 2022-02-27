@@ -31,3 +31,4 @@ if($subject && $topic) {
        echo("table does not exist");
     }
 }
+?>

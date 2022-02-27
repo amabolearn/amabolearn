@@ -40,3 +40,4 @@ if ($formType === "signup"  && $email && $password && $name && ($email && $passw
         echo ("Access pin is incorrect");
     }
 }
+?>
