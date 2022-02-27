@@ -20,10 +20,11 @@ if ($formType == "login"  && $email && $password && ($email && $password) !== ""
     $response = [];
     if (count($res) > 0) {
         $response[0] = $res[0];
-        echo(json_encode($response));
+        echo (json_encode($response));
     } else {
         echo ("wrong info");
     }
     $result->free();
 }
 $con->close()
+?>
