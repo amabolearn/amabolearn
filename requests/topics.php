@@ -1,6 +1,6 @@
 <?php
 //connecting to the database
-$con = new mysqli("localhost", "nodejspractice", "@200420052006%", "amabolearn");
+$con = new mysqli("sql106.epizy.com", "epiz_31049233", "aMYJQ3cJQCHPh", "epiz_31049233_amabolearn");
 if ($con->connect_error) {
     die('Could not connect: ' . $con->connect_error);
 }
@@ -30,4 +30,3 @@ if($subject != "undefined" && $subject != "" && $subject) {
        echo("table does not exist");
     }
 }
-?>
