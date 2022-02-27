@@ -1,6 +1,6 @@
 <?php
 //connecting to the database
-$con = new mysqli("sql106.epizy.com", "epiz_31049233", "aMYJQ3cJQCHPh", "epiz_31049233_amabolearn");
+$con = new mysqli("host", "user", "password", "database");
 if ($con->connect_error) {
     die('Could not connect: ' . $con->connect_error);
 }
@@ -27,4 +27,3 @@ if ($formType == "login"  && $email && $password && ($email && $password) !== ""
     $result->free();
 }
 $con->close()
-?>

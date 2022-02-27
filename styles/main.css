@@ -227,7 +227,7 @@ input , select , textarea , .validation-message , .article-content-cont , .input
     max-width: 300px;
     margin: 4vh auto;
 }
-input[type="submit"] {
+input[value="Post"] {
     min-width: 170px;
     max-width: 240px;
 }

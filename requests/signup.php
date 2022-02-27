@@ -1,20 +1,20 @@
 <?php
 //connecting to the database
-$con = new mysqli("sql106.epizy.com", "epiz_31049233", "aMYJQ3cJQCHPh", "epiz_31049233_amabolearn");
+$con = new mysqli("host", "user", "password", "database");
 if ($con->connect_error) {
     die('Could not connect: ' . $con->connect_error);
 }
-$adminAccessPin = "7bhvbydg8hkanT7DGBDUWSSFFHDVY78TGFe5grNHE8JEB6F";
+$adminAccessPin = "";
 $password    = $_REQUEST["password"];
 $email       = $_REQUEST["email"];
 $formType    = $_REQUEST["formtype"];
 $name        = $_REQUEST["name"];
 $accessPin   = $_REQUEST["accessPin"];
 
-if($formType === "signup"  && $email && $password && $name && ($email && $password && $name) !== "" && $accessPin) {
-    if($accessPin === $adminAccessPin) {
+if ($formType === "signup"  && $email && $password && $name && ($email && $password && $name) !== "" && $accessPin) {
+    if ($accessPin === $adminAccessPin) {
         //addAdmin( $name , $email , $password);
-        
+
         $sql = "SELECT name FROM admin WHERE email = '$email' AND password = '$password' AND name = '$name'";
         $result = $con->query($sql);
         $res = [];
@@ -24,7 +24,7 @@ if($formType === "signup"  && $email && $password && $name && ($email && $passwo
         $response = [];
         if (count($res) > 0) {
             $response[0] = $res[0];
-            echo(json_encode($response));
+            echo (json_encode($response));
             $result->free();
             $con->close();
         } else {
@@ -34,11 +34,9 @@ if($formType === "signup"  && $email && $password && $name && ($email && $passwo
             $con->close();
             $signup_response = [];
             $signup_response[0]["name"] = $name;
-            echo(json_encode($signup_response));
+            echo (json_encode($signup_response));
         }
-    }
-    else {
-        echo("Access pin is incorrect");
+    } else {
+        echo ("Access pin is incorrect");
     }
 }
-?>
