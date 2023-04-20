@@ -1,0 +1,129 @@
+ @font-face {font-family: "Nunito-Regular"; src: url(http://amabolearn.atwebpages.com/fonts/Nunito-Regular.ttf); font-weight: 400;}
+ @font-face {font-family: "Arvo-Regular"; src: url(http://amabolearn.atwebpages.com/fonts/Arvo-Regular.ttf); font-weight: 400;}
+  html{
+    font-size: 100%;
+    overflow-x: hidden;
+    font-size: 100%;
+    line-height: 1.5;
+    box-sizing:border-box
+  }
+   
+  *,*:before,*:after{box-sizing:inherit}
+
+  body{
+   background-color: white;
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+   font-size: 100%;
+   line-height: 1.5;
+  }
+  .container{
+   padding: 0.01em 16px;
+   font-size: 1.3em;
+  }
+  .main-main{
+   max-width: 1920px;
+   margin-left: auto; margin-right: auto;
+  }
+
+  .container .main-main .subject-block{
+   font-family: 'Arvo-Regular', serif;
+   /*height: 50vh;*/
+   border: 0.14em solid DarkOrange;
+   position: relative;
+   margin-bottom: 2em;
+  }
+  .container .main-main .subject-block:nth-of-type(even){
+   border-color: #34C505;
+  }
+  /*.mathematics-box{
+   background-image: url('maths.jpg');
+  }*/
+  .container .main-main .subject-block img{
+   width: 100%;
+  }
+  .container .main-main .subject-block .subject-description{
+   font-size: 60%;
+   margin: 2em 20% 0 20%;
+   font-family: 'Nunito-Regular' Monospace;
+  }
+  .container .main-main .subject-block .subject-link-box a{
+   background-color: DarkOrange;
+   display: inline-block;
+   padding: .5em;
+   text-decoration: none;
+   color: white;
+   width: 76%;
+   margin: 1em 12% 1em 12%;
+   text-align: center;
+  }
+  .container .main-main .subject-block .subject-link-box a:active{
+   background-color: #34C505;
+   transition: all 0.1s ease;
+  }
+  .subject-block img{
+    display: block;
+    max-width: 400px;
+    margin-left: auto; margin-right: auto;
+  }
+
+  /*512px*/
+  @media screen and (min-width:32em){
+   .container{
+    font-size: 1.6em;
+    margin: 0 1.5em;
+   }
+  }
+  /*640px*/
+  @media screen and (min-width:40em){
+   .container{
+    font-size: 1.9em;
+    margin: 0 1.6em;
+   }
+  }
+  /*768px*/
+  @media screen and (min-width:48em){
+   .main-main{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    /*font-size: 1.6em;
+    margin: 0 1.5em;*/
+   }
+   .subject-block{
+    width: 300px;
+    height: 570px;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+    justify-content: space-around;
+    margin-left: .5em;
+   }
+   /*physic-box can be changed as more subject is addes*/
+   .physics-box{
+    align-self: center;
+   }
+   .subject-link-box{
+    margin-top: auto;
+   }
+   .subject-link-box a{
+    width: 80%;
+    margin: 0; padding: 0;
+    text-align: center;
+   }
+  }
+  /*992px*/
+  @media screen and (min-width:62em){
+   .container{
+    font-size: 2.1em;
+   }
+   .subject-block{
+    width: 400px;
+    height: 650px;
+   }
+   /*setting max-width*/
+   .container{
+    max-width: 1500px;
+   }
+  }

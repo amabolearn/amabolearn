@@ -1,0 +1,56 @@
+#related section{
+ background: #5E2E04;
+ color: white;
+ font-size: .8em;
+ padding: 1em .5em;
+}
+#related ul{
+ list-style-type: none;
+ padding: 0;
+ display: flex;
+ justify-content: space-around;
+}
+#related h2{
+ text-align: center;
+ font-size: 1em;
+}
+@media screen and (min-width: 1024px){
+ aside#related{
+  align-self: start;
+  position: sticky;
+  top: 0;
+  }
+  #related section{
+   background-color: white;
+   /* border-radius: 2em; */
+   padding: 1em;
+   box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
+  }
+  #related h2{
+   color: black;
+  }
+  #related ul{
+   display: list-item;
+   list-style-type: circle;
+  }
+  #related ul a{
+   color: blue;
+  }
+  #related ul li{
+   margin-bottom: 2em;
+  }
+ }
+
+
+.error-main{
+ max-width: 800px;
+}
+.error-main p{
+ font-size: .6em;
+ font-weight: bold;
+ margin: auto;
+}
+.error img{
+ width: 50%;
+ margin-left: 25%; margin-right: 25%;
+}
