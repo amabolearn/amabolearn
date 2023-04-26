@@ -19,6 +19,44 @@
 </head>
 <body>
 <?php include '../web-assets/scripts/php/header.php';?>
+<header class="main-header">
+  <div class="masthead active-element">
+  <div class=horiz-flex>
+  <div class="logo-box">
+   <a href="http://amabolearn.atwebpages.com">
+      <picture>
+       <!--[if IE 9]><video style="display: none;"><![endif]-->
+       <source media="(min-width: 1024px)" srcset="web-assets/images/amabo-learn-logo-full-brick-transparent.png" width="80%">
+          <!--[if IE 9]></video><![endif]-->
+          <img src= "web-assets/images/amabo-learn-logo-initial-brick-transparent(1).png" width="40%" alt="logo" class="logo">
+      </picture>
+    </a>
+  </div>
+
+ 
+   <div id="menu-toggle" class="menu-toggle active-element"> 
+       <i class="fa fa-bars" style="font-size:3em; color:white"></i> Menu</div>
+  </div>
+ <nav role="navigation" id="main-nav" class="active-element header-nav">
+
+  <ul>
+   <li class="home-link"><a href="index.html">Home</a>
+   </li>
+   <li class="subj-link"><a class="subject-link" href="lesson.html">Lessons <i class="fa fa-caret-down"></i></a></li>
+   
+   <li class="social-link"><a href="https://bit.ly/3zJJwTW">Our Facebook page</a></li>
+  </ul>
+</nav>
+</div>
+<nav role="navigation" id="sub-nav" class="header-nav">
+ <ul class="active">
+   <li class="maths-link"><a href="mathematics">Mathematics</a></li>
+   <li class="physics-link"><a href="physics">Physics</a></li>
+   <li class="biology-link"><a href="biology">Biology</a></li>
+   <li class="moresubj-link"><a href="lesson.html">More...</a></li>
+ </ul>
+</nav>
+</header>
 <div class="container flex">
  <main role="main" class="main-main">
   <h1 id="subject-name-block">Physics</h1>
@@ -31,8 +69,58 @@
   </section>
  </main>
 <?php include '../web-assets/scripts/php/aside-related-subject.php';?>
+
+<aside role="complementary" id="related">
+  <!--
+<section id="related-links">
+<h4>Related Topics</h4>
+<ul class="w3-ul">
+ <li><a href="#">Related Link 1</a></li>
+   
+ <li><a href="#">Related Link 1</a></li>
+   
+ <li><a href="#">Related Link 2</a></li>
+   
+ <li><a href="#">Related Link 3</a></li>
+</ul>
+</section>-->
+  
+<section class="other-subject-wrapper">
+<h5>Other subjects</h5>
+<ul>
+ <li><a href="http://amabolearn.atwebpages.com/mathematics/">Mathematics</a></li>
+   
+ <li><a href="http://amabolearn.atwebpages.com/biology/">Biology</a></li>
+   
+ <li><a href="http://amabolearn.atwebpages.com/physics/">Physics</a></li>
+</ul>
+</section>
+</aside>
+
 </div>
 <?php include '../web-assets/scripts/php/footer.php';?>
+<footer id="footer" role="contentinfo">
+  <nav>
+   <div>
+    <h3>Lessons</h3>
+    <ul>
+      <li><a href="mathematics">Mathematics</a></li>
+      <li><a href="physics">Physics</a></li>
+      <li><a href="biology">Biology</a>
+      </li>
+    </ul>
+   </div>
+   <div>
+    <h3>Other links</h3>
+    <ul>
+     <li><a href="https://bit.ly/3zJJwTW">Our Facebook page</a></li>
+    </ul>
+   </div>
+  </nav>
+  <div class="footer-info">
+   <p>2023 AmaboLearn.</p>
+  </div>
+ </footer>
  <script src="../web-assets/scripts/javascript/navigation-script.js"></script>
 </body>
 </html>
