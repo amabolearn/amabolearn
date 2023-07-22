@@ -1,217 +1,149 @@
-html{
- font-size: 100%;
- overflow-x: hidden;
- font-size: 100%;
- line-height: 1.5;
- box-sizing:border-box
+header, footer{
+ max-width: 1240px;
+ margin-left: auto; margin-right: auto;
+ position: relative; /*w3-display-container*/
 }
-
-*,*:before,*:after{box-sizing:inherit}
-
-body{
- background-color: white;
- box-sizing: border-box;
- margin: 0;
- padding: 0;
- font-size: 100%;
- line-height: 1.5;
+header{
+ margin-bottom: 2em;
 }
-.main-header, footer{
- max-width: 2400px;
- margin-right: auto; margin-left: auto;
-}
-.masthead{
- background: darkorange;
-}
-.logo{
+.logo-hamburger{
+ padding: .6em 10px;
+ background: orange;
+ color: white;
+ font-size: 1.12em;
+ display: table;
  width: 100%;
 }
+.logo-hamburger div {
+ display:table-cell;
+ vertical-align: middle;
+}
 .logo-box{
- width: 40%;
+ overflow-x: hidden; overflow-y: hidden;
 }
-#main-nav{
- /*background: white*/
- z-index: 10;
-}
-
-.header-nav ul{
- /*background-color: white;*/
- margin-left: 0;
- padding: 0;
- list-style-type: none;
- transition:all 250ms ease-in;
-}
-.header-nav ul li{
- text-align: left;
-}
-.header-nav ul li a {
- display: block;
- font-size: 1.2em;
+.logo-box a {
+ border: 2px solid;
+ border-radius: 6px;
+ padding: 3px;
  text-decoration: none;
- color: white;
- font-family: Georgia;
- border-top: 1px solid #e8e9d2;
- text-align: center;
- padding: .7em 0;
 }
-#sub-nav{
- margin-right: auto; margin-left: auto;
-}
-#sub-nav ul li a{
- color: darkorange;  
+.logo-box a:hover {
+ color: orange;
  background-color: white;
 }
-
-.header-nav ul li a:hover, .header-nav ul li a:active{
- color: white;
- background-color: #4AD0FF;
-}
-
-/*Hide certain link for mobile device*/
-/*.maths-link, li.physics-link, li.biology-link, li.moresubj-link*/ #sub-nav{
- position: absolute;
- left: -999em;
-}
-
-.menu-toggle .one, .menu-toggle .two, .menu-toggle .three{
- background-color: black;
- margin: 0 5% 9px auto;
- width: 65px;
- height: 10px;
- border-radius: 5px;
- transition: all 250ms ease-out;
-}
-.menu-toggle{
- text-align: center;
- cursor: pointer;
- display: flex;
- flex-direction: column;
- justify-content: center;
- color: white;
-}
-.menu-toggle .three{
- margin-bottom: 0;
-}
-#main-nav.neutral-style ul{
- position: absolute;
- left: -999em;
-}
-.menu-toggle.active .one{
-
- transform: translateY(100%) translateX(-15%) rotate(-45deg);
- transform-origin: 75%;
- transition:all 250ms ease-in;
- background-color: white;
-}
-.menu-toggle.active .two{
- display: none;
-}
-.menu-toggle.active .three{
- transform: rotate(45deg);
- transition: all 250ms ease-in;
- background-color: white;
-}
-#main-nav.active .menu-toggle button{
- font-size: 2em;
-}
-#main-nav.active ul{
- position: relative;
- top: 0; left: 0;
- transition: all 250ms ease-out;
- z-index: 10;
- padding: 0;
-}
-
-@media screen and (max-width: 1024px){
- .logo-box{
-  max-width: 200px;
+#sideBAR{
+ border: 1px solid #ccc;
+ height:100%;width:200px;
+ background-color:#fff;
+ z-index:1;overflow:auto;
  }
- .subj-link i{
+ #closeNav, header nav button, header nav a{
+  width:100%;
+  text-align:left;
+  padding:8px 16px;
+ }
+ header nav button, header nav a{
+ text-decoration: none;
+ display: block;
+ width: 100%;
+ border:none;
+ outline-width: 0;
+ background-color:inherit;
+ cursor:pointer;white-space:nowrap
+}
+header nav button:hover, header nav a:hover{
+ background: rgb(204,204,204);
+ color: rgb(0,0,0);
+}
+#openNav{
+ width: 40%;
+ padding: 8px;
+ float: right;
+ margin-left: auto;
+}
+header nav ul{
+  padding-left: 0;
+ }
+@media (max-width:992px){
+ #sideBAR{
+ transform: translate(0%,-50%);
+ -moz-transform: translate(0%, -50%);
   display: none;
- }
-}
-
-@media screen and (min-width: 375px){
- #main-nav ul li a{
-  font-size: 1.2em;
- } 
-}
-/*helper style*/
-.horiz-flex{
- display: flex;
- justify-content: space-between;
-
-}
-@media screen and (min-width: 1024px){
- .logo-box{
-  width: 50%;
-  display: block;
-  display: block;
-  margin-left: auto; margin-right: auto;
- }
- .logo picture{
-  display: block;
-  margin-left: auto; margin-right: auto;
- }
- 
- .masthead .horiz-flex{
-  display: block;
- }
- #sub-nav{
-  position: relative;
-  left: 0;
- }
- .menu-toggle{
-  display: none;
- }
- #main-nav.neutral-style ul{
-  position: relative;
-  left: 0;
- }
- li.maths-link, li.physics-link, li.biology-link{
-  position: relative;
-  left: 0;
- }
- .header-nav ul{
-  display: flex;
-  justify-content: center;
- }
- .header-nav ul li{
-  width: 20%;
- }
- .header-nav ul li a{
-  padding-top: 1.2em;
-  border: none;
-  box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
- }
- #sub-nav{
-  display: block;
-  width: 100%;
-  margin-top: 0;
- }
- #sub-nav ul{
- padding: 0;
- }
- #sub-nav ul li{
-  width: 20%;
- }
- #sub-nav ul li a:hover{
-  color: blue;
-  background-color: darkorange;
- }
- #sub-nav.neutral-style{
+  position:fixed!important;
   position: absolute;
-  left: -999em;
+  top: 50%; right: 0%;
  }
- #sub-nav.active{
-  /* position: relative; */
-  transition:all 250ms ease-in;
-  left: 0;
-  left: calc(100vw/30);
+ #subj-links{
+  cursor: pointer;
+  box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19)
+ }
+#sideBAR {
+  display:none;
+ }
+ #subj-links{
+  display: none;
  }
 }
+
+
+@media (min-width: 993px){
+ header{
+  background: orange;
+  color: white;
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em 16px;
+ }
+ header nav a{
+  display: inline;
+ }
+}
+
+@media (min-width:993px){
+.logo-box a {
+ font-size: 1.5em;
+ border: 2px solid;
+ border-radius: 6px;
+ padding: 3px;
+ }
+ .logo-hamburger{
+  width: auto;
+ }
+ header nav button{
+  display: none;
+ }
+ #sideBAR{
+ border: none;
+ height: auto; width: auto;
+ background: inherit;
+ display:block;
+ margin-left: auto;
+ }
+ header nav div{
+  display: inline;
+ }
+ header nav a{
+  margin: 16px;
+ }
+ header nav a:hover{
+   text-decoration: underline;
+  color: black;
+  outline-width: 0;
+  background: none;
+ }
+ #openNav, #closeNav{
+  display: none;
+ }
+}
+
+
+
+
+
 /********************************Footer Styles********************************/
 footer{
+  margin-top: 2em;
  background-color: darkorange;
  color: white;
  padding-left: 3%; padding-right:3%;
@@ -234,6 +166,6 @@ footer a{
 @media screen and (min-width: 1024px){
  footer nav{
   display: flex;
-  justify-content: space-around;
+  /* justify-content: space-around; */
  }
 }
