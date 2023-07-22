@@ -1,119 +1,16 @@
-  @font-face {font-family: "Arvo-Regular"; src: url(http://amabolearn.atwebpages.com/fonts/Arvo-Regular.ttf); font-weight: 400;}
-  @font-face {font-family: "Nunito-Regular"; src: url(http://amabolearn.atwebpages.com/fonts/Nunito-Regular.ttf); font-weight: 400;}
-  html{
-   font-size: 100%;
-   overflow-x: hidden;
-   font-size: 100%;
-   line-height: 1.5;
-   box-sizing:border-box}
-  }
-
-  *,*:before,*:after{box-sizing:inherit}
-
-  body{
-   background-color: white;
-   box-sizing: border-box;
-   margin: 0;
-   padding: 0;
-   font-size: 100%;
-   line-height: 1.5;
-  }
-  .container{
-   padding: 0.01em 16px;
-   font-size: 1.1em;
-   max-width: 2100px;
-  }
-  .container .main-main{
-   /*font-size: 1.1em;*/
-   font-family: 'Arvo-Regular';
-  }
-  .container .main-main .subject-name-block{
-   font-size: 2.7em;
-   font-family: "Nunito-ExtraBold, Verdana";
-  }
-  .container .main-main .topic-list-section .class-name-block{
-   font-size: 1.5em;
-   font-family: "Nunito-ExtraBold, Verdana";
-  }
-  .container .main-main .topic-list-section{
-   margin: 0 0em 5em 0;
-   border-left: 0.3em inset #34C505;
-   background-color: #FFEEDE;
-   padding: 1.1em;
-   max-width: 800px;
-  }
-  .container .main-main .topic-list-section ul{
-   /* list-style-type: none; */
-   padding: 0;
-  }
-  .container .main-main .topic-list-section ul li{
-   margin-bottom: 1.2em;
-  }
-  .container .main-main .topic-list-section ul li a{
-   color: DarkOrange;
-   text-decoration: none;
-  }
-  .container .main-main .topic-list-section ul li:nth-child(even) a{
-   color: orange;
-  }
-  .container .main-main .topic-list-section ul li a:hover{
-   color: #00EAFF;
-  }
- 
-  /*432px*/
-  @media screen and (min-width:27em){
-   .container{
-    /*margin: 0 2.5em;*/
-   }
-  }
-  /*520*/
-  @media screen and (min-width:32.5em){
-   .container .main-main{
-   margin: 0 3em 5em 1em;
-   }
-  }
-  /*768*/
-  @media screen and (min-width:48em){
-   .container {
-   font-size: 1.5em;
-   }
-  }
-  /*993*/
-  @media screen and (min-width:993px){
-   .container{
-    padding: 0; margin: 0;
-    width: 100%;
-    display: flex;
-   }
-   .container:before{
-    display: table;
-    content: "";
-    clear: both;
-   }
-   .container:after{
-    display: block;
-    content: "";
-    clear: both;
-   }
-   .container .main-main{
-    width: 60%;
-    float: left;
-   }
-  
-  }
-  /*1344px*/
-  @media screen and (min-width:84em){
-   .container{
-    font-size: 2.5em;
-    max-width: 1500px;
-   }
-  }
-  /*
-  @keyframes tick-rolling{
-    0%{transform: rotate(0deg)}
-    20%{transform: rotate(45deg)}
-    40%{transform: rotate(90deg)}
-    60%{transform: rotate(180deg)}
-    80%{transform: rotate(270deg)}
-    100%{transform: rotate(360deg)}
-   }*/
+.main-main{
+  font-size: calc(16px + (21 - 16) * ((100vw - 320px) / (991 - 320)));
+ }
+ .topic-list-section{
+  background-color: white; color: orange; 
+  font-size: .8em;
+  box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
+  padding:0.01em 16px;
+  margin-top:16px;margin-bottom:16px;
+ }
+ .topic-list-section ul{
+  margin-left: .4em;
+ }
+ .topic-list-section li{
+  margin-bottom: 5px;
+ }
