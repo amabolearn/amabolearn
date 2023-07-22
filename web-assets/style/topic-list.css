@@ -1,10 +1,20 @@
+/* body{
+ display: flex;
+ flex-direction: column;
+ justify-content: flex-end;
+} */
 .main-main{
   font-size: calc(16px + (21 - 16) * ((100vw - 320px) / (991 - 320)));
  }
+ main{
+  background-color: rgb(243, 236, 236);
+  margin: 1.2em;
+  padding: 0.01em 16px
+ }
  .topic-list-section{
-  background-color: white; color: orange; 
+  color: orange; 
   font-size: .8em;
-  box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
+  /* box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19); */
   padding:0.01em 16px;
   margin-top:16px;margin-bottom:16px;
  }
@@ -14,3 +24,13 @@
  .topic-list-section li{
   margin-bottom: 5px;
  }
+ .topic-list-section a:hover{
+  color: blue;
+ }
+ /* header, footer{
+   width: 100%;
+  flex-shrink: 0;
+ }
+ footer{
+  /* margin-top: auto; */
+ } */
