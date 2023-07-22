@@ -1,5 +1,3 @@
-/* Font should be placed at the top so that it will be downloaded immediately the page open*/
-/* change body fpbt-size to 100% */
 @font-face {font-family: "Lato-Black";src: url(../fonts/Lato-Black.ttf);font-weight: 400;}
 @font-face {font-family: "Lato-BlackItalic";src: url(../fonts/Lato-BlackItalic.ttf);font-weight: 400;}
 @font-face {font-family: "Lato-Bold";src: url(../fonts/Lato-Bold.ttf);font-weight: 400;}
@@ -11,10 +9,6 @@
 @font-face {font-family: "Lato-Thin";src: url(../fonts/Lato-Thin.ttf);font-weight: 400;}
 @font-face {font-family: "Lato-ThinItalic";src: url(../fonts/Lato-ThinItalic.ttf);font-weight: 400;}
 
-@font-face {font-family: "Poppins-Bold";src: url(../fonts/Poppins-Bold.ttf);font-weight: 400;}
-@font-face {font-family: "Poppins-Light";src: url(../fonts/Poppins-Light.ttf);font-weight: 400;}
-@font-face {font-family: "Poppins-Regular";src: url(../fonts/Poppins-Regular.ttf);font-weight: 400;}
-
 @font-face {font-family: "Merriweather-Black"; src: url(../fonts/Merriweather-Black.ttf); font-weight: 400;}
 @font-face {font-family: "Merriweather-Light"; src: url(../fonts/Merriweather-Light.ttf); font-weight: 400;}
 @font-face {font-family: "Merriweather-BlackItalic"; src: url(../fonts/Merriweather-BlackItalic.ttf); font-weight: 400;}
@@ -24,150 +18,98 @@
 @font-face {font-family: "Merriweather-LightItalic"; src: url(../fonts/Merriweather-LightItalic.ttf); font-weight: 400;}
 @font-face {font-family: "Merriweather-LightItalic"; src: url(../fonts/Merriweather-LightItalic.ttf); font-weight: 400;}
 @font-face {font-family: "Merriweather-Regular"; src: url(../fonts/Merriweather-Regular.ttf); font-weight: 400;}
-
 @font-face {font-family: "Arvo-Regular"; src: url(../fonts/Arvo-Regular.ttf); font-weight: 400;}
-@font-face {font-family: "Arvo-Bold"; src: url(../fonts/Arvo-Bold.ttf); font-weight: 400;}
 
-
-@font-face {font-family: "Roboto-Regular"; src: url(../fonts/Roboto-Regular.ttf); font-weight: 400;}
-@font-face {font-family: "Roboto-Bold"; src: url(../fonts/Roboto-Bold.ttf); font-weight: 400;}
-@font-face {font-family: "Roboto-Light"; src: url(../fonts/Roboto-Light.ttf); font-weight: 400;}
-@font-face {font-family: "Roboto-Medium"; src: url(../fonts/Roboto-Medium.ttf); font-weight: 400;}
-@font-face {font-family: "Roboto-Medium"; src: url(../fonts/Roboto-Medium.ttf); font-weight: 400;}
-
-@font-face {font-family: "OpenSans-Bold";src: url(../fonts/OpenSans-Bold.ttf);font-weight: 400;}
-@font-face {font-family: "OpenSans-Bold";src: url(../fonts/OpenSans-Bold.ttf);font-weight: 400;}
-@font-face {font-family: "OpenSans-ExtraBold";src: url(../fonts/OpenSans-ExtraBold.ttf);font-weight: 400;}
-@font-face {font-family: "OpenSans-ExtraBoldItalic";src: url(../fonts/OpenSans-ExtraBoldItalic.ttf);font-weight: 400;}
-@font-face {font-family: "OpenSans-Italic";src: url(../fonts/OpenSans-Italic.ttf);font-weight: 400;}
-@font-face {font-family: "OpenSans-Medium";src: url(../fonts/OpenSans-Medium.ttf);font-weight: 400;}
-@font-face {font-family: "OpenSans-MediumItalic";src: url(../fonts/OpenSans-MediumItalic.ttf);font-weight: 400;}
-@font-face {font-family: "OpenSans-Regular";src: url(../fonts/OpenSans-Regular.ttf);font-weight: 400;}
-@font-face {font-family: "OpenSans-SemiBold";src: url(../fonts/OpenSans-SemiBold.ttf);font-weight: 400;}
-@font-face {font-family: "OpenSans-SemiBold";src: url(../fonts/OpenSans-SemiBold.ttf);font-weight: 400;}
-
-.word-count-mobile{
-  background: blue;
- }
- .word-count-desktop{
-   background: red;
- }
-
-html{
- font-size: 100%;
- overflow-x: hidden;
- font-size: 100%;
- line-height: 1.5;
- box-sizing:border-box}
+#container{
+ max-width: 1240px;
+ margin-left: auto; margin-right: auto;
 }
-
-*,*:before,*:after{box-sizing:inherit}
-
-body{
- background-color: white;
- box-sizing: border-box;
- margin: 0;
- padding: 0;
- font-size: 100%;
- line-height: 1.5;
+.word-count-mobile{color: red} .word-count-desktop{color: blue;}
+div.main-content-wrapper{
+ max-width: 1240px;
+ font-size: calc(16px + (21 - 16) * ((100vw - 320px) / (991 - 320)));
+ /* font-size: 16px; */
 }
-
-a{
- text-decoration: none;
- color: orange;
-}
-
-.main-content-wrapper{
-  /*font-size: 21px;*/
-  font-size: calc(16px + (21 - 16) * ((100vw - 320px) / (500 - 320)));
- max-width: 2100px;
- margin-left: auto; margin-right:auto;
-}
-
-/*creating style for small-screen devices*/
-.w3-container,.w3-panel{padding:0.01em 16px}.w3-panel{margin-top:16px;margin-bottom:16px}
-.w3-container:before, .w3-container:after{
- content: "";
- display: table;
- clear: both;
-}
-@media screen and (min-width: 320px){
- .main-content-wrapper{
-  /*font-size: 1.2em;*/
-  /*font-size: calc(16px + (33-16) * ((100vw - 320px) / (1600 - 320)))*/
-  /*font-size: 21px;
-  font-size: calc(16px + (21 - 16) * ((100vw - 320px) / (500 - 320)));*/
+@media (max-width:991px){
+ div.main-content-wrapper{
+  /* font-size: 23px; */
  }
 }
 .lesson-container{
  padding:0.01em 16px; 
  font-family: Lato-Regular, Tahoma, Verdana, sans-serif;
 }
-
-.main-note-section{
- margin-bottom: 3em;
- display: block;
+@media (min-width:601px){
+ .lesson-container{
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+ }
 }
-/*style for topic header*/
+@media (min-width:992px){
+ .lesson-container{
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+ }
+}
 #subject-topic{
- display: flex;
- flex-direction: column;
- font-family: Merriweather-Black;
+ text-align: center;
+ color:#000; 
+ background-color:#ffebcc;
+ padding-top:32px;
+ padding-bottom: 32px;
+ margin-top:16px;margin-bottom:16px;
+ border-right:6px solid orange;border-left:6px solid orange;
+
+ 
 }
-
-#topic-block{
- margin-left: auto;
+#date-class{
+ font-size: .8em;
+ background-color: aqua;
 }
-
-time{
- font-weight: bold;
-}
-
-
-/*Style for GLOSSARY, OBJECTIVE, SUMMARY & REVISION EXERCISE*/
-#objective, #glossary, #summary, #revision-exercise{
- margin: 0.9em;
- padding:0.01em 1em;
- border-radius: 16px;
- color: white; 
- background-color: orange;
-}
-/* shadow effect on hover*/
-#objective:hover, #glossary:hover, #summary:hover, #revision-exercise:hover{
- box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
-
+#subject-topic h1{
+ font-family: Arvo-Regular;
 }
 #objective h2, #glossary h2, #summary h2, #revision-exercise h2{ 
  text-align: center;
  font-family: Merriweather-Black, Georgia;
 }
-
-#objective ul li::marker{
- color: #03AF00;
- font-size: 170%;
-}
-#glossary dt{
- color: #03AF00; 
- text-transform: lowercase;
- font-style: italic;
- font-size: 120%;
+#note-block h1, #note-block h2, #note-block h2{
+ font-family: Merriweather-Black, Arial Black, Sans-Serif;
+ /*Segoe UI, Helvetica, Gill Sans, Arial Black;*/
+ font-weight: bold;
 }
 
-#summary li::marker, #revision-exercise li::marker{
- font-size: 130%;
- color: green;
+#objective, #glossary, #summary, #revision-exercise{
+ color:#fff;
+ background-color:#e68a00;
+ padding:8px 16px;
+ margin:16px;
+ border-radius: 8px;
+ box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19)
+}
+@media (min-width: 601px){
+ #objective-glossary, #summary-revisionexercise{
+  content:"";
+  display:table;
+  clear:both;
+ }
+ #objective, #glossary, #summary, #revision-exercise{
+  width: 42%;
+  float: left;
+  font-size: .8em;
+ }
 }
 
-
-/*defining headers for lesson*/
-h1, h2, h3, h4, h5, h6{
- margin-bottom: 0;
+.main-note-section h2{
+ border-left: 0.1em solid #00FF28;
 }
 .lesson-container h1{
- font-size: 2.2em;
-}
+  font-size: 2.2em;
+ }
 .lesson-container h2{
- font-size: 1.8em;
+  font-size: 1.8em;
 }
 .lesson-container h3{
  font-size: 1.5em;
@@ -184,107 +126,29 @@ h1, h2, h3, h4, h5, h6{
  margin-bottom: 0;
  font-family: Merriweather-BoldItalic, Garamond, serif;
 }
-.main-note-section h2 + p, .main-note-section h3 + p, .main-note-section h4 + p, .main-note-section h5 + p, .main-note-section h6 + p{
- margin-top:0;
-}
-.main-note-section h4 + ul{
- margin-top:0;
-}
-.margin-note-section 
-#note-block h1, #note-block h2, #note-block h2{
- font-family: 'Merriweather-Black', 'Arial Black', Sans-Serif;
- /*Segoe UI, Helvetica, Gill Sans, Arial Black;*/
- font-weight: bold;
-}
-#note-block .main-note-section h2{
- padding-bottom: 0.3em;
- border-left: 0.1em solid #00FF28;
- padding-left: 0.3em;
-}/*2px font-weight*/
-
-#note-block .main-note-section h2:hover{
- color: orange;
- border-bottom-color: DarkOrange;
-}
-h5.sample-solution{
- padding: 0; margin: 0;
-}
-
-
-/**/
-
-/***************************************************/
-
-/*Extra Info/NB-Block Styles*/
-.extra-info, .extra-info2 {
- width: 85%;
- margin: 0.4em;
- padding: 3px;
- /*float: right;*/
- background-color: #D5A200;
- color: white;
- border: 3px solid green; 
- font-size: 90%;
-}
-.extra-info2{
- float: none;
- font-size: 100%;
- margin-left: auto; margin-right: auto;
-}
-.extra-info h4, .extra-info2 h4{
- padding: 0; margin: 0;
-}
-/*extra info2 is not floating ohh*/
-.extra-info:nth-of-type(even){
- /*float: left;*/
-}
-.extra-info:before, .extra-info:after{
- clear: both;
- display: block;
-}
-.example {
- padding:0.01em 16px;
- margin-bottom: 2em;
- background-color: #FFC259;
-}
- /**************************************/
- 
- /*descriptive list */
-#note-block dt {
- font-size: 120%;
- font-weight: bold;
- margin-top: 1.8em;
-}
-#note-block dt:before{
- content: "\2022 ";
- color: DarkOrange;
- font-size: 110%;
-}
-#note-block dd {
- margin: 0.4em;
-}
-#note-block li::marker{
- color: DarkOrange;
- font-family: Monospace;
-}
 .descr-list h3, .descr-list h4{
  display: list-item;
  list-style: inside;
 }
+
 /*************************************/
 /*image box*/
 .image-box{
  font-family: OpenSans-Italic, 'Poppins-Bold';
- font-size: 80%;
  width: 100%;
  max-width: 600px;
+ margin-top: 16px;
+ margin-bottom: 16px;
+ padding: 0.01em 16px;
 }
 .image-box img{
  margin-bottom: 0;
+ width: 100%;
  margin-left: auto; margin-right: auto;
 }
-.image-box p{
- margin-top: 0;
+.image-box figcaption{
+ /* margin-top: 0; */
+ padding: 4px;
 }
 @media screen and (min-width: 768px){
  .image-box{
@@ -293,78 +157,34 @@ h5.sample-solution{
  }
 }
 /***************************/
-/***×****Tables ****/
-table caption{
- font-size: 80%;
+
+.main-note-section{
+ margin-bottom: 3em;
 }
-.tableStyleOne{
-   display: table;
-   width: 100%;
-   text-align: center;
-   margin-bottom: 2.1em;
-}
-.tableStyleOne, .tableStyleOne th, .tableStyleOne td {
- border: .2em solid gray; 
- border-collapse: collapse;
-}
-.tableStyleOne th, .tableStyleOne td{
- padding: .5em;
-}
-.tableStyleTwo{
- display: table;
-}
-.tableStyleTwo, .tableStyleTwo th, .tableStyleTwo td{
- border: .08em solid black;
- border-collapse: collapse;
-}
-.tableStyleTwo th, .tableStyleTwo td{
- padding: .5em;
-}
-.tableStyleThree{
- display: table;
+.next-prev a{
+ display: block;
  text-align: center;
- width: 100%;
- border-collapse: collapse;
+ text-decoration: none;
+ background-color:#fff;
+ color:#e68a00;
+ width: 7em;
+ padding:12px 24px;
+ border-radius: 4px;
+ box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19)
 }
-.tableStyleThree th, .tableStyleThree td{
- text-align: center;
- vertical-align: top;
- border-collapse: collapse;
- padding: .5em;
+.next-prev a:hover{
+ color:#fff;
+ background-color: #e68a00;
 }
-/********************************,,,,*/
-
-/**math style***/
-.w3-math {
- font-family: courier, monospace;
- font-size: 93%;
+.prev-btn{
+ margin-left:0;
 }
-
-/***************************************/
-abbr{text-decoration:none;}
-
-.next-prev{
- display: flex;
- font-size: .8em;
-}
-.next-btn, .prev-btn{
- padding: 1.1em .5em;
-}
-.next-btn:hover, prev-btn:hover{
- color: #65FF81;
- background: DarkOrange;
-}
-.next-prev .prev-btn{
- margin-right: auto;
-}
-.next-prev .next-btn{
- margin-left: auto;
+.next-btn{
+  margin-left: auto;
 }
 
-main a, article a{
- color: orange;
-}
-
+/* .w3-row:before,.w3-row-padding:after,.w3-row-padding:before,
+.w3-cell-row:before,.w3-cell-row:after,.w3-clear:after,.w3-clear:before,.w3-bar:before,.w3-bar:after{content:"";display:table;clear:both} */
 /*JS toggle style*/
 
 .main-note-section.js-default-style p, .main-note-section.js-default-style section, .main-note-section.js-default-style img, .main-note-section.js-default-style table, .main-note-section.js-default-style ul, .main-note-section.js-default-style ol, .main-note-section.js-default-style dl, .main-note-section.js-default-style h3, .main-note-section.js-default-style h4, .main-note-section.js-default-style h5{
@@ -374,77 +194,4 @@ main a, article a{
 .main-note-section.collapsed p, .main-note-section.collapsed section, .main-note-section.collapsed img, .main-note-section.collapsed table, .main-note-section.collapsed ul, .main-note-section.collapsed ol, .main-note-section.collapsed dl, .main-note-section.collapsed h3, .main-note-section.js-default-style h4, .main-note-section.collapsed h5{
  position: relative;
  left: 0;
-}
-
-@media screen and (min-width:460px) {
- .lesson-container{
-  /*width: 82%;*/
-  margin-left: auto; margin-right: auto;
- }
-}
-@media screen and (min-width:562px){
- .lesson-container{
-  /*width: 75%;*/
- }
-}
-@media screen and (min-width:620px){
- .main-content-wrapper{
-  /*font-size: 1.3em;*/
- }
-}
-@media screen and (min-width: 768px){
- #objective-glossary, #summary-revisionexercise{
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
- }
- #objective, #glossary, #summary, #revision-exercise{
-  width: 49%;
-  border-radius: 0;
-  font-size: 70%;
- }
-}
-@media screen and (min-width:880px){
- .lesson-container{
-   width: 67%;
-  /* font-size: 1.5em; */
- }
-}
-@media screen and (min-width: 1024px){
- .main-content-wrapper.flex{
-  display: grid;
-  grid-template-columns: 5vw [main-start] 1fr [main-end aside-start] 200px [aside-end] 5vw;
-  grid-template-areas: 
-  "margin main aside margin";
-  ;
-  /*font-size: 1.1em;*/
-  font-size: calc(17.6px + (38 - 17.6) * ((100vw - 1024px) / (2000 - 1024)));
- }
- .lesson-container{
-  grid-area: main;
-  width: 95%;
- /* font-size: 1em;*/
- }
- aside#related{
-  grid-area: aside;
- }
-}
-@media screen and (min-width: 1230px){
- .lesson-container{
-  /*width: 80%;*/
- }
-}
-
-
-
-.other-subject-wrapper{
- font-size: 80%;
- font-family: 'Merriweather-Light', serif;
-}
-
-@media screen and (min-width: 2000px){
- .main-content-wrapper.flex{
-  font-size: 2.3em;
-  
- }
 }
