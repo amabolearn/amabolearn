@@ -8,6 +8,7 @@
  }
  main{
   max-width: 1240px;
+  margin-left:auto; margin-right: auto;
   background-color: rgb(243, 236, 236);
   margin: 1.2em;
   padding: 0.01em 16px
