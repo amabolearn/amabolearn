@@ -9,75 +9,58 @@
     <?php include '../../web-assets/scripts/php/favicon.php';?>
  <link rel="stylesheet" href="../../web-assets/style/navigation.css">
  <link rel="stylesheet" href="../../web-assets/style/lesson-template.css">
- <link rel="stylesheet" href="../../web-assets/style/related.css">
+ <link rel="stylesheet" href="../../web-assets/style/w3.css">
+ <link rel="stylesheet" href="../../web-assets/style/w3-theme-orange.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
  <style type="text/css">
  
  </style>
- <script src="../../web-assets/scripts/js/third-party/picturefill.min.js" async></script>
+ <script src="../../web-assets/scripts/javascript/third-party/picturefill.min.js" async></script>
 </head>
 
 <body>
  <?php include '../../web-assets/scripts/php/header.php';?>
- <header class="main-header">
-  <div class="masthead active-element">
-  <div class=horiz-flex>
-  <div class="logo-box">
-   <a href="https://amabolearn.github.io/amabolearn/">
-      <picture>
-       <!--[if IE 9]><video style="display: none;"><![endif]-->
-       <source media="(min-width: 1024px)" srcset="https://amabolearn.github.io/amabolearn/web-assets/images/amabo-learn-logo-full-brick-transparent.png" width="80%">
-          <!--[if IE 9]></video><![endif]-->
-          <img src= "https://amabolearn.github.io/amabolearn/web-assets/images/amabo-learn-logo-initial-brick-transparent(1).png" width="40%" alt="logo" class="logo">
-      </picture>
-    </a>
-  </div>
-
+ <header>
+  <div class="logo-hamburger">  
+  <div class="logo-box"><b><a href="https://amabolearn.github.io/amabolearn"><img src="https://amabolearn.github.io/amabolearn/web-assets/images/amabolearn_logo_svg.svg" width="15px"> AMABO LEARN</a></b></div>
+  <div id="openNav" onclick="openMenu();">&#9776; </div>
+ </div>
  
-   <div id="menu-toggle" class="menu-toggle active-element"> 
-       <i class="fa fa-bars" style="font-size:3em; color:white"></i> Menu</div>
-  </div>
- <nav role="navigation" id="main-nav" class="active-element header-nav">
-
-  <ul>
-   <li class="home-link"><a href="https://amabolearn.github.io/amabolearn/">Home</a>
-   </li>
-   <li class="subj-link"><a class="subject-link" href="https://amabolearn.github.io/amabolearn/lesson.html">Lessons <i class="fa fa-caret-down"></i></a></li>
-   
-   <li class="social-link"><a href="https://bit.ly/3zJJwTW">Our Facebook page</a></li>
-  </ul>
-</nav>
+ <nav id="sideBAR" class="w3-right">  <button id="closeNav" onclick="closeMenu();">&times; 
+ </button>  
+<div class="nav-links w3-bar">
+ <a href="https://amabolearn.github.io/amabolearn" class="">Home</a>
+<button onclick="showSubj()">Lessons <i class="fa fa-caret-down"></i></button>
+<div id="subj-links">
+ <a href="https://amabolearn.github.io/amabolearn/biology" class="">Biology</a>
+ <a href="https://amabolearn.github.io/amabolearn/mathematics" class="">Mathematics</a>
+ <a href="https://amabolearn.github.io/amabolearn/physics" class="">Physics</a>
 </div>
-<nav role="navigation" id="sub-nav" class="header-nav">
- <ul class="active">
-   <li class="maths-link"><a href="https://amabolearn.github.io/amabolearn/mathematics">Mathematics</a></li>
-   <li class="physics-link"><a href="https://amabolearn.github.io/amabolearn/physics">Physics</a></li>
-   <li class="biology-link"><a href="https://amabolearn.github.io/amabolearn/biology">Biology</a></li>
-   <li class="moresubj-link"><a href="https://amabolearn.github.io/amabolearn/lesson.html">More...</a></li>
- </ul>
+</div>
 </nav>
 </header>
- <div class="main-content-wrapper flex"><!--flex not used yet-->
+ 
+ <div class="main-content-wrapper flex "><!--flex not used yet-->
  
   <main role="main" class="lesson-container biology">
-   <div> <!-- Container for topic-header -->
-    <div id="subject-topic"> <!--Subject + Topic-->
-     <h1 id="subject-block">Biology</h1>
-     <h1 id="topic-block">Conservation of Natural Resources</h1> 
+   <div> 
+    <div id="subject-topic" style="background-image:url('../../web-assets/images/biology/forest_in_water.jpg'); background-size: 100%;"> 
+     <h1 id="subject-block" style="color:white">Biology</h1>
+     <h1 id="topic-block" style="color:white">Conservation of Natural Resources</h1> 
     </div>
     
-    <div id="date-class"> <!-- Date modified -->
+    <div id="date-class"> 
      <p>First Published:
        <time datetime="2022-03-19">19th March, 2022</time>
         | Last Modified:
        <time datetime="2022-03-20">20th March, 2022</time>
      </p>
-    </div>
+   </div> 
    </div>
     
    <section id="objective-glossary">
     <section id="objective">
-     <h2>Learning Objectives</h2> <!--Learning Objective-->
+     <h2 class="w3-center">Learning Objectives</h2> <!--Learning Objective-->
      <p>After completing this chapter, you will be able to
      </p>
      <ul>
@@ -136,12 +119,12 @@
            <!--[if IE 9]></video><![endif]-->
            <!--<img src="../../web-assets/images/biology/iroko tree.jpg" alt="iroko tree">
        </picture>-->           
-       <p>Iroko tree is a renewable resources because it is replenished by natural process.</p>
+       <figcaption>Iroko tree is a renewable resources because it is replenished by natural process.</figcaption>
       </section>
       
       <section class="image-box"> 
        <img src="../../web-assets/images/biology/Petroleum_sample.jpg" alt="petrol unrenewable resources" alt="petroleum unrenewable resources" width="85%">
-       <p>Crude oil is an unrenewable resource.</p>
+       <figcaption>Crude oil is an unrenewable resource.</figcaption>
       </section>
       
       <p>
@@ -182,7 +165,7 @@
       </p>
       <section class="image-box"> 
        <img src="../../web-assets/images/biology/eroded-land.jpeg" alt="a man standing by an eroded land" width="85%">
-       <p>Soil erosion is a typical example of soil degradation.</p>
+       <figcaption>Soil erosion is a typical example of soil degradation.</figcaption>
       </section>
       <p>
        The following are ways to prevent soil degradation:
@@ -203,7 +186,7 @@
       <section class="image-box"> 
        <img src="../../web-assets/images/biology/bush-burning.JPG" alt="a bush burning" width="85%">
       <img src="../../web-assets/images/biology/fallen-trees.jpg" alt="a fallen tree" width="85%">
-       <p>Bush burning (top) and deforestation (bottom) are the killers of our forest and its resources.</p>
+       <figcaption>Bush burning (top) and deforestation (bottom) are the killers of our forest and its resources.</figcaption>
       </section>
       <p>
        We need to appreciate the importance of forest and preserve it. Therefore, the method of conserving forest are as follow:
@@ -229,7 +212,7 @@
       <h3>Wildlife Conservation</h4>
       <section class="image-box"> 
        <img src="../../web-assets/images/biology/Yankari_Elephants.jpg" alt="elephant in a game reserve" width="85%">
-       <p>Elephants; an example of wildlife.</p>
+       <figcaption>Elephants; an example of wildlife.</figcaption>
       </section>
       
       <p>These are animals that live wild in an area without being introduced by humans. <br>The method of preserving wildlife are:
@@ -254,7 +237,7 @@
       </ol>
       <section class="image-box"> 
        <img src="../../web-assets/images/biology/coal.jpg" alt="coal" width="85%">
-       <p>Coal is an example of mineral resources (fossil fuel) used to power train engines.</p>
+       <figcaption>Coal is an example of mineral resources (fossil fuel) used to power train engines.</figcaption>
       </section>
       <h3>Air Conservation</h3>
       <p>This is another important resources for survival of both plant and animals as it contains oxygen O<sub>2</sub> and carbon dioxide CO<sub>2</sub>.
@@ -271,7 +254,7 @@
        <!--<img src="../../web-assets/images/biology/solar-and-sun.jpg" alt="solar panel and sun" width="85%">
        <br>-->
        <img src="../../web-assets/images/biology/wind-turbine.jpg" alt="wind-turbines" width="85%">
-       <p><!--Solar Energy and -->Wind energy<!-- (bottom)--> <!--are--> is not only great alternative to fossil fuel but <!--are--> also a cleaner source of energy.</p>
+       <figcaption><!--Solar Energy and -->Wind energy<!-- (bottom)--> <!--are--> is not only great alternative to fossil fuel but <!--are--> also a cleaner source of energy.</figcaption>
       </section>
      </div>
     </section>
@@ -311,7 +294,7 @@
       
       <section class="image-box"> 
        <img src="../../web-assets/images/biology/Yankari_park.jpg" alt="Yankari game reserve at Bauchi State" width="85%">
-       <p>Yankari game reserve at Bauchi State.</p>
+       <figcaption>Yankari game reserve at Bauchi State.</figcaption>
       </section>
        
       <h3>Importance of Water</h3>
@@ -401,48 +384,20 @@
     <section id="revision-exercise">
      <h2>Exercise</h2>
      <ul>
-      <li>What is Resource</li>
+      <li>What is Resource</li> 
       <li>Catch us </li>
      </ul>
     </section>
     </section>
     <section class="next-prev">
-     <a class="next-btn" href="#">Next<br> Reproduction - Meaning and Types</a>
+     <a class="prev-btn" href="#">Previous &#8592</a>
+     <a class="next-btn" href="#">Next &#8594</a>
     </section>
   </main>
 
 <?php include '../../web-assets/scripts/php/aside-related-subject.php';?>
 
-<aside role="complementary" id="related">
-  <!--
-<section id="related-links">
-<h4>Related Topics</h4>
-<ul class="w3-ul">
- <li><a href="#">Related Link 1</a></li>
-   
- <li><a href="#">Related Link 1</a></li>
-   
- <li><a href="#">Related Link 2</a></li>
-   
- <li><a href="#">Related Link 3</a></li>
-</ul>
-</section>-->
-  
-<section class="other-subject-wrapper">
-<h5>Other subjects</h5>
-<ul>
- <li><a href="https://amabolearn.github.io/amabolearn/mathematics/">Mathematics</a></li>
-   
- <li><a href="https://amabolearn.github.io/amabolearn/biology/">Biology</a></li>
-   
- <li><a href="https://amabolearn.github.io/amabolearn/physics/">Physics</a></li>
-</ul>
-</section>
-</aside>
-
  </div>
- 
- <?php include '../../web-assets/scripts/php/footer.php';?>
  <footer id="footer" role="contentinfo">
   <nav>
    <div>
@@ -455,9 +410,9 @@
     </ul>
    </div>
    <div>
-    <h3>Other links</h3>
+    <!-- <h3>Other links</h3>
     <ul>
-     <li><a href="https://bit.ly/3zJJwTW">Our Facebook page</a></li>
+     <li><a href="https://bit.ly/3zJJwTW">Our Facebook page</a></li> -->
     </ul>
    </div>
   </nav>
@@ -465,6 +420,7 @@
    <p>2023 AmaboLearn.</p>
   </div>
  </footer>
+ <?php include '../../web-assets/scripts/php/footer.php';?>
  <script src="../../web-assets/scripts/js/navigation-script.js"></script>
  <script src="../../web-assets/scripts/js/lesson.js"></script>
   <!--[if lt IE 9]> <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/ html5shiv.min.js"> </script > <![endif]-->
