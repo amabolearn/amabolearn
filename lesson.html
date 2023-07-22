@@ -10,6 +10,7 @@
     <?php include 'web-assets/scripts/php/favicon.php';?>
  <link rel="stylesheet" href="web-assets/style/subjectlist.css">
  <link rel="stylesheet" href="web-assets/style/navigation.css">
+ <link rel="stylesheet" href="web-assets/style/w3.css">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
  <style type="text/css">
 
@@ -17,72 +18,53 @@
 </head>
 <body>
 <?php include 'web-assets/scripts/php/header.php';?>
-<header class="main-header">
-  <div class="masthead active-element">
-  <div class=horiz-flex>
-  <div class="logo-box">
-   <a href="https://amabolearn.github.io/amabolearn/">
-      <picture>
-       <!--[if IE 9]><video style="display: none;"><![endif]-->
-       <source media="(min-width: 1024px)" srcset="https://amabolearn.github.io/amabolearn/web-assets/images/amabo-learn-logo-full-brick-transparent.png" width="80%">
-          <!--[if IE 9]></video><![endif]-->
-          <img src= "https://amabolearn.github.io/amabolearn/web-assets/images/amabo-learn-logo-initial-brick-transparent(1).png" width="40%" alt="logo" class="logo">
-      </picture>
-    </a>
-  </div>
-
+<<header>
+  <div class="logo-hamburger">  
+  <div class="logo-box"><b><a href="https://amabolearn.github.io/amabolearn"><img src="https://amabolearn.github.io/amabolearn/web-assets/images/amabolearn_logo_svg.svg" width="15px"> AMABO LEARN</a></b></div>
+  <div id="openNav" onclick="openMenu();">&#9776; </div>
+ </div>
  
-   <div id="menu-toggle" class="menu-toggle active-element"> 
-       <i class="fa fa-bars" style="font-size:3em; color:white"></i> Menu</div>
-  </div>
- <nav role="navigation" id="main-nav" class="active-element header-nav">
-
-  <ul>
-   <li class="home-link"><a href="https://amabolearn.github.io/amabolearn/">Home</a>
-   </li>
-   <li class="subj-link"><a class="subject-link" href="https://amabolearn.github.io/amabolearn/lesson.html">Lessons <i class="fa fa-caret-down"></i></a></li>
-   
-   <li class="social-link"><a href="https://bit.ly/3zJJwTW">Our Facebook page</a></li>
-  </ul>
-</nav>
+ <nav id="sideBAR" class="w3-right">  <button id="closeNav" onclick="closeMenu();">&times; 
+ </button>  
+<div class="nav-links w3-bar">
+ <a href="https://amabolearn.github.io/amabolearn" class="">Home</a>
+<button onclick="showSubj()">Lessons <i class="fa fa-caret-down"></i></button>
+<div id="subj-links">
+ <a href="https://amabolearn.github.io/amabolearn/biology" class="">Biology</a>
+ <a href="https://amabolearn.github.io/amabolearn/mathematics" class="">Mathematics</a>
+ <a href="https://amabolearn.github.io/amabolearn/physics" class="">Physics</a>
 </div>
-<nav role="navigation" id="sub-nav" class="header-nav">
- <ul class="active">
-   <li class="maths-link"><a href="https://amabolearn.github.io/amabolearn/mathematics">Mathematics</a></li>
-   <li class="physics-link"><a href="https://amabolearn.github.io/amabolearn/physics">Physics</a></li>
-   <li class="biology-link"><a href="https://amabolearn.github.io/amabolearn/biology">Biology</a></li>
-   <li class="moresubj-link"><a href="https://amabolearn.github.io/amabolearn/lesson.html">More...</a></li>
- </ul>
+</div>
 </nav>
 </header>
 <div class="container">
  <main role="complementary" class="main-main">
   
   <section class="subject-block mathematics-box">
-   <a href="mathematics"><img src="web-assets\images\mathematics\mathematics-banner.jpg" href="Mathematics"></a>
-   <div class="subject-description">
+   <a href="mathematics"><img src="web-assets\images\maths_banner.jpg" href="Mathematics"></a>
+   <!-- <div class="subject-description">
     <b>Mathematics</b> is the science of numbers and shapes, whose branches are arithmetic, algebra, geometry and trigonometry. Discover more...
-   </div>
+   </div> -->
    <div class="subject-link-box"><a href="mathematics">Mathematics</a></div>
   </section>
   
   <br>
   
   <section class="subject-block physics-box">
-   <a href="physics"><img src="web-assets\images\physics\physics-banner.jpg" href="Physics"></a>
-   <div class="subject-description">
+   <a href="physics"><img src="web-assets\images\physics_banner.jpg" href="Physics"></a>
+   <!-- <div class="subject-description">
     <b>Physics</b> is the scientific study of the relationship between matter and energy. Discover more...
-   </div>
+   </div> -->
    <div class="subject-link-box"><a href="physics">Physics</div>
   </section>
   
   <br>
   
   <section class="subject-block biology-box">
-   <a href="biology"><img src="web-assets/images/biology/dna.png" href="Biology"></a>
-   <div class="subject-description">
+   <a href="biology"><img src="web-assets/images/biology_banner.jpg" href="Biology"></a>
+   <!-- <div class="subject-description">
     <b>Biology</b> is the study of life. Thus, it is the scientific study of plants and animals. Discover more...
-   </div>
+   </div> -->
    <div class="subject-link-box"><a href="biology">Biology</div>
   </section>
  </main>
@@ -100,9 +82,9 @@
     </ul>
    </div>
    <div>
-    <h3>Other links</h3>
+    <!-- <h3>Other links</h3>
     <ul>
-     <li><a href="https://bit.ly/3zJJwTW">Our Facebook page</a></li>
+     <li><a href="https://bit.ly/3zJJwTW">Our Facebook page</a></li> -->
     </ul>
    </div>
   </nav>
