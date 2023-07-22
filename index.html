@@ -11,6 +11,7 @@
   <?php include 'web-assets/scripts/php/favicon.php';?>
  <link rel="stylesheet" href="web-assets/style/navigation.css">
  <link rel="stylesheet" href="web-assets/style/main.css">
+ <link rel="stylesheet" href="web-assets/style/w3.css">
  <!-- <link rel="stylesheet" href="web-assets/style/third-party/fontawesome.min.css"> -->
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
  
@@ -19,49 +20,31 @@
 
 <body>
 
-<header class="main-header">
-   <div class="masthead active-element">
-   <div class=horiz-flex>
-   <div class="logo-box">
-    <a href="http://amabolearn.atwebpages.com">
-       <picture>
-        <!--[if IE 9]><video style="display: none;"><![endif]-->
-        <source media="(min-width: 1024px)" srcset="web-assets/images/amabo-learn-logo-full-brick-transparent.png" width="80%">
-           <!--[if IE 9]></video><![endif]-->
-           <img src= "web-assets/images/amabo-learn-logo-initial-brick-transparent(1).png" width="40%" alt="logo" class="logo">
-       </picture>
-     </a>
+  <header>
+    <div class="logo-hamburger">  
+    <div class="logo-box"><b><a href="https://amabolearn.github.io/amabolearn"><img src="amabolearn_logo_svg.svg" width="15px"> AMABO LEARN</a></b></div>
+    <div id="openNav" onclick="openMenu();">&#9776; </div>
    </div>
- 
-  
-    <div id="menu-toggle" class="menu-toggle active-element"> 
-        <i class="fa fa-bars" style="font-size:3em; color:white"></i> Menu</div>
-   </div>
-  <nav role="navigation" id="main-nav" class="active-element header-nav">
- 
-   <ul>
-    <li class="home-link"><a href="index.html">Home</a>
-    </li>
-    <li class="subj-link"><a class="subject-link" href="lesson.html">Lessons <i class="fa fa-caret-down"></i></a></li>
-    
-    <li class="social-link"><a href="https://bit.ly/3zJJwTW">Our Facebook page</a></li>
-   </ul>
- </nav>
- </div>
- <nav role="navigation" id="sub-nav" class="header-nav">
-  <ul class="active">
-    <li class="maths-link"><a href="mathematics">Mathematics</a></li>
-    <li class="physics-link"><a href="physics">Physics</a></li>
-    <li class="biology-link"><a href="biology">Biology</a></li>
-    <li class="moresubj-link"><a href="lesson.html">More...</a></li>
-  </ul>
- </nav>
-</header>
-  	<div id="container">
+   
+   <nav id="sideBAR" class="w3-right">  <button id="closeNav" onclick="closeMenu();">&times; 
+   </button>  
+  <div class="nav-links w3-bar">
+   <a href="https://amabolearn.github.io/amabolearn" class="">Home</a>
+  <button onclick="showSubj()">Lessons <i class="fa fa-caret-down"></i></button>
+  <div id="subj-links">
+   <a href="https://amabolearn.github.io/amabolearn/biology" class="">Biology</a>
+   <a href="https://amabolearn.github.io/amabolearn/mathematics" class="">Mathematics</a>
+   <a href="https://amabolearn.github.io/amabolearn/physics" class="">Physics</a>
+  </div>
+  </div>
+  </nav>
+  </header>
 
+<div id="container" style="max-width: 1240px;">
 <main class="main">
  <div class="amabo-section">
   <section class="banner banner-intro"> 
+   <div>
     <h1>Welcome to Amabo Learn</h1>
     <p><b>AMABO LEARN</b> is created and runned by young and innovative game changers, who are working to help high school students get access to</p>
     <ul>
@@ -70,13 +53,20 @@
       <li> <i class="fa fa-check-square"> </i> improve learning via <b>SOCIAL</b>izing</li>
     </ul>
     <!--<a href="/about-us">About us</a>-->
+   </div>
   </section>
   <section class="banner banner-subj">
     <h2>Our Lessons</h2>
     <ul>
-     <li><a href="mathematics">Mathematics <i class="fa fa-book"></i></a></li>
-     <li><a href="biology">Biology <i class="fa fa-book"></i></a></li> 
-     <li><a href="physics">Physics <i class="fa fa-book"></i></a></li>
+     <li>
+       <a href="mathematics">Mathematics <i class="fa fa-book"></i></a>
+      </li>
+     <li>
+       <a href="biology">Biology <i class="fa fa-book"></i></a>
+      </li> 
+     <li>
+       <a href="physics">Physics <i class="fa fa-book"></i></a>
+      </li>
   </section>
   <section class="banner banner-discussion">
     <div class="flex-box-1">
@@ -94,7 +84,7 @@
    </div>
    <div class="flex-box-3">
      <h2>Want to work with Amabo Learn?</h2>
-     <p>Amabo Learn is a e-learning platform under development and we are in need of other great minds to join us work things out. If you are interested, send a mail to amabolearnintake@gmail.com or click on the link below </p>
+     <p>Amabo Learn is an e-learning platform under development and we are in need of other great minds to join us work things out. If you are interested, send a mail to amabolearnintake@gmail.com or click on the link below </p>
      <a href="mailto:amabolearnintake@gmail.com"><i class="fa fa-envelope"></i> Email us</a>
    </div>
   </section>
@@ -102,17 +92,18 @@
   <h3>Recent Lessons</h3>
   <ul><li>
     <a href="physics/concept-of-work">
-      <img src="web-assets/images/no_thumbnail.png" width="200px">Physics:Concept of Work</a>
+      <img src="web-assets/images/physics_thumbnail.jpg" width="200px"><p>Physics:Concept of Work</p></a>
   </li>
   <li>
-    <a href="biology/conservation-of-natural-resources"><img src="web-assets/images/no_thumbnail.png" width="200px">Biology: Conservation of Natural Resources</a>
+    <a href="biology/conservation-of-natural-resources"><img src="web-assets/images/biology_thumbnail.jpg" width="200px"><p>Biology: Conservation of Natural Resources</p></a>
   </li>
 
   <li>
-    <a href="mathematics/quadratic-expression"><img src="web-assets/images/no_thumbnail.png" width="200px">Mathematics: Quadratic Expressions</a>
+    <a href="mathematics/quadratic-expression"><img src="web-assets/images/maths_thumbnail.jpg" width="200px"><p>Mathematics: Quadratic Expressions</p></a>
   </li></ul>
 </section>
 </main>
+</div>
   
    
 <footer id="footer" role="contentinfo">
@@ -120,16 +111,16 @@
    <div>
     <h3>Lessons</h3>
     <ul>
-      <li><a href="mathematics">Mathematics</a></li>
-      <li><a href="physics">Physics</a></li>
-      <li><a href="biology">Biology</a>
+      <li><a href="https://amabolearn.github.io/amabolearn/mathematics">Mathematics</a></li>
+      <li><a href="https://amabolearn.github.io/amabolearn/physics">Physics</a></li>
+      <li><a href="https://amabolearn.github.io/amabolearn/biology">Biology</a>
       </li>
     </ul>
    </div>
    <div>
-    <h3>Other links</h3>
+    <!-- <h3>Other links</h3>
     <ul>
-     <li><a href="https://bit.ly/3zJJwTW">Our Facebook page</a></li>
+     <li><a href="https://bit.ly/3zJJwTW">Our Facebook page</a></li> -->
     </ul>
    </div>
   </nav>
